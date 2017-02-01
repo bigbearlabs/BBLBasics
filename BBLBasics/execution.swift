@@ -53,18 +53,17 @@ public func execOnMainAsync(_ operation: @escaping () -> Void) {
 open class LastOnlyQueue {
   
   let queue: DispatchQueue
+  let threshold: TimeInterval
   
   var opOnStandby: (()->())?
-  var poller: DispatchSourceTimer!
+  var poller: DispatchSourceTimer?
   
-  public init(queue: DispatchQueue = DispatchQueue(label: "\(Bundle.main.bundleIdentifier!).LastOnlyQueue")) {
+  public init(queue: DispatchQueue = DispatchQueue(label: "\(Bundle.main.bundleIdentifier!).LastOnlyQueue"), threshold: TimeInterval = 3) {
     self.queue = queue
-    
-    // ensure the queue is operational when it's created.
-    self.resume()
+    self.threshold = threshold
   }
   
-  func resume(threshold: TimeInterval = 3) {
+  public func poll() {
     self.poller = periodically(every: 3, queue: queue) { [weak self] in
       let op = self?.opOnStandby
       
@@ -74,13 +73,23 @@ open class LastOnlyQueue {
     }
   }
   
+  public func pollStop() {
+    self.poller?.cancel()
+    self.poller = nil
+  }
+  
   open func async(closure: @escaping ()->()) {
     queue.async { [unowned self] in
-      if self.opOnStandby != nil {
-        print("will supersede op.")
+      if self.poller != nil {
+        // we are polling, so just drop the op so it picks it up.
+        print("will supersede any existing op in \(self)")
+        self.opOnStandby = closure
       }
-      
-      self.opOnStandby = closure
+      else {
+        self.poll()
+        closure()
+      }
     }
   }
+  
 }
