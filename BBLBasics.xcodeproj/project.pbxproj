@@ -13,6 +13,7 @@
 		5191A8F61E3418B5001B94FD /* execution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5191A8F21E3418B5001B94FD /* execution.swift */; };
 		5191A8F71E3418B5001B94FD /* Foundation-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5191A8F31E3418B5001B94FD /* Foundation-ext.swift */; };
 		5191A8FF1E341A17001B94FD /* AppKit-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5191A8FE1E341A17001B94FD /* AppKit-ext.swift */; };
+		51AB27181E4DFD55003ECA7A /* TrackingAreaOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AB27171E4DFD55003ECA7A /* TrackingAreaOwner.swift */; };
 		51DADAE21E3D784B0035D4EB /* NSArray+MapFilterReduce.h in Headers */ = {isa = PBXBuildFile; fileRef = 51DADAE01E3D784B0035D4EB /* NSArray+MapFilterReduce.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		51DADAE31E3D784B0035D4EB /* NSArray+MapFilterReduce.m in Sources */ = {isa = PBXBuildFile; fileRef = 51DADAE11E3D784B0035D4EB /* NSArray+MapFilterReduce.m */; };
 /* End PBXBuildFile section */
@@ -37,6 +38,7 @@
 		5191A8F21E3418B5001B94FD /* execution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = execution.swift; sourceTree = "<group>"; };
 		5191A8F31E3418B5001B94FD /* Foundation-ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation-ext.swift"; sourceTree = "<group>"; };
 		5191A8FE1E341A17001B94FD /* AppKit-ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppKit-ext.swift"; sourceTree = "<group>"; };
+		51AB27171E4DFD55003ECA7A /* TrackingAreaOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingAreaOwner.swift; sourceTree = "<group>"; };
 		51DADAE01E3D784B0035D4EB /* NSArray+MapFilterReduce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MapFilterReduce.h"; sourceTree = "<group>"; };
 		51DADAE11E3D784B0035D4EB /* NSArray+MapFilterReduce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MapFilterReduce.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,6 +83,7 @@
 		5191A8CF1E341889001B94FD /* BBLBasics */ = {
 			isa = PBXGroup;
 			children = (
+				51AB27171E4DFD55003ECA7A /* TrackingAreaOwner.swift */,
 				5191A8FE1E341A17001B94FD /* AppKit-ext.swift */,
 				5191A8F21E3418B5001B94FD /* execution.swift */,
 				5191A8F31E3418B5001B94FD /* Foundation-ext.swift */,
@@ -215,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51AB27181E4DFD55003ECA7A /* TrackingAreaOwner.swift in Sources */,
 				5191A8F71E3418B5001B94FD /* Foundation-ext.swift in Sources */,
 				5191A8F61E3418B5001B94FD /* execution.swift in Sources */,
 				5191A8FF1E341A17001B94FD /* AppKit-ext.swift in Sources */,

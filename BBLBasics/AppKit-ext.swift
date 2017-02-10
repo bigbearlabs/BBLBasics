@@ -78,6 +78,7 @@ extension NSWindow {
   }
   
   
+  // DEPRECATED use `transparant =`
   // RENAME makeTransparent
   public func makeInvisible(_ invisible: Bool = true) {
     if invisible {
@@ -89,21 +90,47 @@ extension NSWindow {
     let alpha: CGFloat = invisible ? 0 : 1
     self.contentView?.alphaValue = alpha
   }
+  
+  
+  @IBInspectable
+  public var transparent: Bool {
+    get {
+      return
+        !self.isOpaque
+        && self.backgroundColor == NSColor.clear
+    }
+    set {
+      self.isOpaque = !transparent
+      self.backgroundColor = newValue ? NSColor.clear : self.backgroundColor
+    }
+  }
+  
+  // NOTE this value, when set on ib, seems to get overwritten.
+//  @IBInspectable
+  public var isOverlay: Bool {
+    get {
+      return self.level == Int(CGWindowLevelForKey(CGWindowLevelKey.floatingWindow))
+    }
+    set {
+      self.level = Int(CGWindowLevelForKey(newValue ? CGWindowLevelKey.floatingWindow : CGWindowLevelKey.normalWindow))
+    }
+  }
+  
 }
 
 
 
-extension NSTrackingArea {
+extension NSView {
   
-  public convenience init(rect: CGRect, options: NSTrackingAreaOptions, handlers: [NSEventType:()->Void]) {
-    let trackingEventHandler = TrackingEventHandler()
-    self.init(rect: rect, options: options, owner: trackingEventHandler, userInfo:nil)
+  public func addSubview(_ subview: NSView, fit: Bool) {
+    self.addSubview(subview)
+    if fit {
+      subview.frame = self.bounds
+    }
   }
   
-  class TrackingEventHandler {
-    func mouseEntered(event: NSEvent) {
-      print("BANG")
-    }
+  public func removeAllSubviews() {
+    self.subviews.forEach { $0.removeFromSuperview() }
   }
   
 }
