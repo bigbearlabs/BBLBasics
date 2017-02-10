@@ -41,7 +41,7 @@ class TrackingAreaOwner: NSView {
   
   func maybeInvokeHandler(_ eventType: NSEventType) {
     guard let handler = handlers[eventType] else {
-      debug("\(self) did't register handler for type \(eventType)")
+      // debug("\(self) did't register handler for type \(eventType)")
       return
     }
     
