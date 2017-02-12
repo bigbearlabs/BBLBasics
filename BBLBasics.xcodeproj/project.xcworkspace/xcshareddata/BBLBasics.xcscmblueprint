@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "43A9A1BCEFDFD8F70EF39798E279FD4487E45957",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "43A9A1BCEFDFD8F70EF39798E279FD4487E45957" : 9223372036854775807,
+    "6C71DF8D4EAED84A4BB92018D54642F26E11361D" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5F8E91B6-D0D7-44DD-8CBA-AFA493AAC7F2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "43A9A1BCEFDFD8F70EF39798E279FD4487E45957" : "BBLBasics\/",
+    "6C71DF8D4EAED84A4BB92018D54642F26E11361D" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "BBLBasics",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "BBLBasics.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:bigbearlabs\/BBLBasics.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "43A9A1BCEFDFD8F70EF39798E279FD4487E45957"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "bitbucket.org:bigbearlabs\/contexter.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6C71DF8D4EAED84A4BB92018D54642F26E11361D"
+    }
+  ]
+}
