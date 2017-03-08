@@ -49,6 +49,13 @@ public func execOnMainAsync(_ operation: @escaping () -> Void) {
 }
 
 
+public func exec(delay: TimeInterval, operation: @escaping () -> Void) {
+  let queue = DispatchQueue.global(qos: .default)
+  queue.asyncAfter(deadline: .now() + delay) {
+    operation()
+  }
+}
+
 
 open class LastOnlyQueue {
   
