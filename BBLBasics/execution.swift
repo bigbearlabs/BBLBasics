@@ -53,18 +53,24 @@ public func execOnMainAsync(_ operation: @escaping () -> Void) {
 open class LastOnlyQueue {
   
   let queue: DispatchQueue
-  let threshold: TimeInterval
+  let interval: TimeInterval
   
   var opOnStandby: (()->())?
-  var poller: DispatchSourceTimer?
   
   public init(queue: DispatchQueue = DispatchQueue(label: "\(Bundle.main.bundleIdentifier!).LastOnlyQueue"), threshold: TimeInterval = 3) {
     self.queue = queue
-    self.threshold = threshold
+    self.interval = threshold
   }
+
+  
+  // MARK: - polling
+  // FIXME: some conflation here -- separate polling concerns and op truncation.
+
+  var poller: DispatchSourceTimer?
+
   
   public func poll() {
-    self.poller = periodically(every: 3, queue: queue) { [weak self] in
+    self.poller = periodically(every: self.interval, queue: queue) { [weak self] in
       let op = self?.opOnStandby
       
       self?.opOnStandby = nil
@@ -78,7 +84,7 @@ open class LastOnlyQueue {
     self.poller = nil
   }
   
-  open func async(closure: @escaping ()->()) {
+  open func pollingAsync(closure: @escaping ()->()) {
     queue.async { [unowned self] in
       if self.poller != nil {
         // we are polling, so just drop the op so it picks it up.
