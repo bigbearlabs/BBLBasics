@@ -56,6 +56,19 @@ extension URL {
 
 
 
+extension NSObject {
+  
+  public func notifyValueChange(forKey key: String, op: (() -> ())? = nil) {
+    self.willChangeValue(forKey: key)
+    if op != nil {
+      op!()
+    }
+    self.didChangeValue(forKey: key)
+  }
+  
+}
+
+
 // MARK: app-level.
 
 public extension NSUserNotification {
