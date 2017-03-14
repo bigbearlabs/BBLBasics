@@ -23,15 +23,28 @@ extension String {
 
 
 
- extension Dictionary {
+extension Array {
   
-   mutating func filterSelf( includeElement: (Dictionary.Iterator.Element) throws -> Bool) rethrows -> () {
-     for (k, v) in self {
-       if try !includeElement((k, v)) { self.removeValue(forKey: k) }
-     }
-   }
+  public func onlyElementMatching(filter: (Element) -> Bool) -> Element {
+    let matches = self.filter(filter)
+    if matches.count != 1 {
+      fatalError()
+    }
+    return matches[0]
+  }
+}
+
+
+
+extension Dictionary {
   
- }
+  mutating func filterSelf( includeElement: (Dictionary.Iterator.Element) throws -> Bool) rethrows -> () {
+    for (k, v) in self {
+      if try !includeElement((k, v)) { self.removeValue(forKey: k) }
+    }
+  }
+  
+}
 
 
 
