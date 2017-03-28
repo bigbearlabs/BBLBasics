@@ -19,6 +19,16 @@ extension String {
     }
   }
   
+  // FIXME
+  public func indented(level: Int, spaces: Int = 2) -> String {
+    var indentation = ""
+    (0...(level * spaces)).forEach { _ in
+      indentation.append(" ")
+    }
+    return
+      self
+        .replacingOccurrences(of: "\n", with: "\(indentation)\n")
+  }
 }
 
 
