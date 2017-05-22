@@ -10,6 +10,17 @@
 import AppKit
 
 
+
+extension NSApplication {
+  
+  public var appSupportDir: URL {
+    let appSupportDirUrl = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
+    return appSupportDirUrl.appendingPathComponent(Bundle.main.bundleIdentifier!)
+  }
+  
+}
+
+
 public func dispatchAction(_ action: Selector, sender: AnyObject) {
   NSApp.sendAction(action, to: nil, from: sender)
 }
