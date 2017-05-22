@@ -35,10 +35,15 @@ extension String {
 
 extension Array {
   
-  public func onlyElementMatching(filter: (Element) -> Bool) -> Element {
+  public func onlyElementMatching(allowNoMatch: Bool = false, filter: (Element) -> Bool) -> Element? {
     let matches = self.filter(filter)
     if matches.count != 1 {
-      fatalError()
+      if matches.count == 0 && allowNoMatch {
+        // no matches and caller specified this will be alloed.
+        return nil
+      } else {
+        fatalError()
+      }
     }
     return matches[0]
   }
