@@ -27,11 +27,24 @@ public func dispatchAction(_ action: Selector, sender: AnyObject) {
 
 
 
+
 extension NSResponder {
+  
+  public var responderChain: [NSResponder] {
+    
+    var chain: [NSResponder] = []
+    var responder: NSResponder? = self
+    while responder != nil {
+      chain.append(responder!)
+      responder = responder!.nextResponder
+    }
+    
+    return chain
+  }
   
   public func insertAsNextResponder(_ responder: NSResponder) {
     if responder == self {
-      debug("asked to make myself my next responder, doing nothing", #function)
+      // asked to make myself my next responder, doing nothing.
       return
     }
     
