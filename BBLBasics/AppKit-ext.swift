@@ -21,7 +21,18 @@ extension NSApplication {
 }
 
 
-public func dispatchAction(_ action: Selector, sender: AnyObject) {
+public func dispatchAction(_ action: Selector, sender: Any?) {
+  // #sendAction scan order according to docs:
+  // key window's chain 
+  // -> key window's delegate's chain
+  // -> main window's chain
+  // -> main window's delegate's chain
+  // -> NSApp's chain
+  // -> NSApp's delegate's chain
+  let dispatchPath =
+    [NSApp.keyWindow?.responderChain as Any, NSApp.keyWindow?.delegate as Any, NSApp.mainWindow?.responderChain as Any, NSApp.mainWindow?.delegate as Any, NSApp.responderChain, NSApp.delegate as Any]
+  debug("will dispatch \(action) to the first handling object in chain: \(dispatchPath)")
+  
   NSApp.sendAction(action, to: nil, from: sender)
 }
 
@@ -56,12 +67,13 @@ extension NSResponder {
     }
   }
   
-  private func debug(_ msg: Any?, _ hash_function: String = "", tag: String = "") {
-    // TODO impl in a library-suitable way.
-  }
-  
 }
 
+
+private func debug(_ msg: Any?, _ hash_function: String = "", tag: String = "") {
+  NSLog("\(String(describing: msg))")
+  // TODO impl in a library-suitable way.
+}
 
 
 extension NSMenuItem {
