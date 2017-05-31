@@ -91,6 +91,14 @@ open class LastOnlyQueue {
     self.poller = nil
   }
   
+  
+  open func async(closure: @escaping ()->()) {
+    self.pollingAsync { [unowned self] in
+      closure()
+      self.pollStop()
+    }
+  }
+  
   open func pollingAsync(closure: @escaping ()->()) {
     queue.async { [unowned self] in
       if self.poller != nil {
