@@ -11,22 +11,22 @@ import AppKit
 
 
 /// allows creating tracking areas with closures.
-public class TrackingAreaOwner: NSView {
+public class TrackingAreaOwner: NSResponder {
+  
+  var trackingArea: NSTrackingArea!
   let handlers: [NSEventType:()->Void]
   
-  convenience public init?(view: NSView, handlers: [NSEventType:()->Void]) {
-    self.init(coder: NSArchiver(), handlers: handlers)
+  public init?(view: NSView, handlers: [NSEventType:()->Void]) {
+    self.handlers = handlers
+    super.init()
     
-    let rect = view.bounds  // superseded by .inVisibleRect
+    let rect = view.bounds  // superseded by .inVisibleRect option.
     let options: NSTrackingAreaOptions = [.inVisibleRect, .mouseEnteredAndExited, .activeAlways]
-    let area = NSTrackingArea(rect: rect, options: options, owner: self, userInfo:nil)
-    view.addTrackingArea(area)
+    trackingArea = NSTrackingArea(rect: rect, options: options, owner: self, userInfo:nil)
+    
+    view.addTrackingArea(trackingArea)
   }
   
-  init?(coder: NSCoder, handlers: [NSEventType:()->Void]) {
-    self.handlers = handlers
-    super.init(frame: .zero)
-  }
   
   required public init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
