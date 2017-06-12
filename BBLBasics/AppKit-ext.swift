@@ -13,9 +13,14 @@ import AppKit
 
 extension NSApplication {
   
-  public var appSupportDir: URL {
+  public var appSupportPathUrl: URL {
     let appSupportDirUrl = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
     return appSupportDirUrl.appendingPathComponent(Bundle.main.bundleIdentifier!)
+  }
+  
+  public var documentsPathUrl: URL {
+    let documentsPathUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    return documentsPathUrl
   }
   
 }

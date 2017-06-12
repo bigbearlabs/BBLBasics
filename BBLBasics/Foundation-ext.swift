@@ -32,7 +32,6 @@ extension String {
 }
 
 
-
 extension Array {
   
   public func onlyElementMatching(allowNoMatch: Bool = false, filter: (Element) -> Bool) -> Element? {
