@@ -118,21 +118,7 @@ extension NSWindow {
     return self.contentView?.superview
   }
   
-  
-  // DEPRECATED use `transparant =`
-  // RENAME makeTransparent
-  public func makeInvisible(_ invisible: Bool = true) {
-    if invisible {
-      self.backgroundColor = .clear
-    }
     
-    self.isOpaque = !invisible
-    
-    let alpha: CGFloat = invisible ? 0 : 1
-    self.contentView?.alphaValue = alpha
-  }
-  
-  
   @IBInspectable
   public var transparent: Bool {
     get {
@@ -141,7 +127,7 @@ extension NSWindow {
         && self.backgroundColor == NSColor.clear
     }
     set {
-      self.isOpaque = !transparent
+      self.isOpaque = !newValue
       self.backgroundColor = newValue ? NSColor.clear : self.backgroundColor
     }
   }
@@ -186,6 +172,10 @@ extension CGPoint {
 
 extension CGRect {
   
+  public init(centre: CGPoint, size: CGSize) {
+    let origin = centre.offset(x: -1 * size.width/2, y: -1 * size.height/2)
+    self.init(origin: origin, size: size)
+  }
 
   public func modified(delta: CGRect) -> CGRect {
     return CGRect(x: self.x + delta.x, y: self.y + delta.y, width: self.width + delta.width, height: self.height + delta.height)
@@ -236,6 +226,10 @@ extension CGRect {
     case bottom
   }
   
+  
+  public var centre: CGPoint {
+    return self.origin.offset(x: self.size.width/2, y: self.size.height/2)
+  }
   
   // convert top-y coordinates (Quartz) to bottom-y coordinates (Cocoa).
   public func toCocoaFrame() -> CGRect {
