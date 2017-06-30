@@ -57,6 +57,7 @@ public func exec(delay: TimeInterval, operation: @escaping () -> Void) {
 }
 
 
+
 open class LastOnlyQueue {
   
   let queue: DispatchQueue
@@ -113,4 +114,55 @@ open class LastOnlyQueue {
     }
   }
   
+}
+
+
+
+extension DispatchSource {
+  
+  /// convenience method for the the timer that takes a block and makes it tick before returning it.
+  static public func timerWithBlock(deadline: DispatchTime, queue: DispatchQueue, repeating: TimeInterval? = nil, block: @escaping () -> ()) -> DispatchSourceTimer {
+    let timer = DispatchSource.makeTimerSource(flags: [], queue: queue)
+    
+    if let repeating = repeating {
+      timer.scheduleRepeating(deadline: deadline, interval: DispatchTimeInterval.seconds(Int(repeating)), leeway: DispatchTimeInterval.seconds(0))
+    } else {
+      timer.scheduleOneshot(deadline: deadline)
+    }
+  
+    timer.setEventHandler(handler: block)
+  
+    timer.resume()
+
+    return timer
+  }
+}
+
+
+
+public class QueuePool {
+  
+  var queues: [DispatchQueue] = []
+  
+  public var currentQueue: DispatchQueue {
+    return queues.last!
+  }
+  
+  public init() {
+    self.addQueue()
+  }
+  
+  
+  public func addQueue() {
+    let newQueue = DispatchQueue(label: "\(self)_\(Date())" )
+    
+    queues.append(newQueue)
+    
+    // log("queue pool status: \(status)")
+  }
+  
+  
+  var status: String {
+    return "queues: \(queues)"
+  }
 }
