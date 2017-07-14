@@ -149,7 +149,7 @@ extension NSObject {
   
   // MARK: associated objects
   
-  public func associatedObject(key: String, owner: Any? = nil, init: () -> Any) -> Any {
+  public func associatedObject<T: NSObject>(key: String, owner: Any? = nil, init: () -> T) -> T {
     let owner = owner ?? self
     
     var axObserverKey = key
@@ -157,7 +157,7 @@ extension NSObject {
       let obj = `init`()
       objc_setAssociatedObject(owner, &axObserverKey, obj, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
     }
-    return objc_getAssociatedObject(owner, &axObserverKey)
+    return objc_getAssociatedObject(owner, &axObserverKey) as! T
   }
   
 }
