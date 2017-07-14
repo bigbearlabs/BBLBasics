@@ -118,6 +118,14 @@ extension NSWindow {
     return self.contentView?.superview
   }
   
+  
+  public var titleView: NSView? {
+    let superview = self.standardWindowButton(.closeButton)?.superview
+    let titleViews = superview?.subviews.filter { $0 is NSTextField }
+    return titleViews?.first
+  }
+  
+  
     
   @IBInspectable
   public var transparent: Bool {
@@ -218,6 +226,18 @@ extension CGRect {
     
     return CGRect(x: self.origin.x, y: self.origin.y + yOffset, width: self.size.width, height: height)
   }
+  
+  public func positioned(relativeTo: CGRect, edge: NSRectEdge) -> CGRect {
+    let delta: CGPoint
+    switch edge {
+    case .maxX:
+      delta = CGPoint(x: relativeTo.x + relativeTo.width - self.x, y: relativeTo.y - self.y)
+    default:
+      fatalError()
+    }
+    return self.offsetBy(dx: delta.x, dy: delta.y)
+  }
+  
   
   public enum PinnedEdge {
     case left
