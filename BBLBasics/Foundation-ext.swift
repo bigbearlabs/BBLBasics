@@ -136,12 +136,28 @@ extension Date {
 
 extension NSObject {
   
+  // MARK: kvc
+  
   public func notifyValueChange(forKey key: String, op: (() -> ())? = nil) {
     self.willChangeValue(forKey: key)
     if op != nil {
       op!()
     }
     self.didChangeValue(forKey: key)
+  }
+  
+  
+  // MARK: associated objects
+  
+  public func associatedObject(key: String, owner: Any? = nil, init: () -> Any) -> Any {
+    let owner = owner ?? self
+    
+    var axObserverKey = key
+    if objc_getAssociatedObject(owner, &axObserverKey) == nil {
+      let obj = `init`()
+      objc_setAssociatedObject(owner, &axObserverKey, obj, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
+    }
+    return objc_getAssociatedObject(owner, &axObserverKey)
   }
   
 }
