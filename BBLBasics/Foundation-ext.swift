@@ -149,15 +149,19 @@ extension NSObject {
   
   // MARK: associated objects
   
-  public func associatedObject<T: NSObject>(key: String, owner: Any? = nil, init: () -> T) -> T {
+  /// get an associated object for `key`, or creates and sets according to `init`.
+  /// `key` must be a static member to ensure uniqueness.
+  public func associatedObject<T: NSObject>(key: UnsafeRawPointer, owner: Any? = nil, init: () -> T) -> T {
     let owner = owner ?? self
     
-    var axObserverKey = key
-    if objc_getAssociatedObject(owner, &axObserverKey) == nil {
-      let obj = `init`()
-      objc_setAssociatedObject(owner, &axObserverKey, obj, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
+    if let storedObject = objc_getAssociatedObject(owner, key) {
+      return storedObject as! T
     }
-    return objc_getAssociatedObject(owner, &axObserverKey) as! T
+    else {
+      let obj = `init`()
+      objc_setAssociatedObject(owner, key, obj, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
+      return obj
+    }
   }
   
 }
