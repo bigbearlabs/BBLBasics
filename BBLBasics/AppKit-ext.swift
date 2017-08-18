@@ -153,6 +153,18 @@ extension NSWindow {
     }
   }
   
+  
+  public var image: NSImage {
+    let windowNumber = UInt32(self.windowNumber)
+    if let image = CGWindowListCreateImage(.zero, [.optionIncludingWindow], windowNumber, CGWindowImageOption.nominalResolution) {
+      return NSImage(cgImage: image, size: CGSize(width: image.width, height: image.height))
+    }
+    else {
+      fatalError()
+    }
+  }
+
+  
 }
 
 
