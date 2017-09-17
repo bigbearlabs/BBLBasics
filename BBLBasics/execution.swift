@@ -158,11 +158,6 @@ public class QueuePool {
     
     queues.append(newQueue)
     
-    // log("queue pool status: \(status)")
   }
   
-  
-  var status: String {
-    return "queues: \(queues)"
-  }
 }
