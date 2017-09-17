@@ -164,6 +164,15 @@ extension NSWindow {
     }
   }
 
+
+  public var diagnosisData: [String : Any] {
+    return [
+      "windownNumber": self.windowNumber,
+      "level": self.level,
+      "visible": self.isVisible,
+      "alpha": self.alphaValue,
+    ]
+  }
   
 }
 
