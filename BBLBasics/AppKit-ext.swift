@@ -20,10 +20,11 @@ extension NSApplication {
   
   public var documentsPathUrl: URL {
     let documentsPathUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-    return documentsPathUrl
+    return documentsPathUrl.appendingPathComponent(NSRunningApplication.current().localizedName!)
   }
   
 }
+
 
 
 public func dispatchAction(_ action: Selector, sender: Any?) {
