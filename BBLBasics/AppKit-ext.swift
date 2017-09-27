@@ -20,7 +20,7 @@ extension NSApplication {
   
   public var documentsPathUrl: URL {
     let documentsPathUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-    return documentsPathUrl.appendingPathComponent(NSRunningApplication.current().localizedName!)
+    return documentsPathUrl.appendingPathComponent(NSRunningApplication.current.localizedName!)
   }
   
 }
@@ -145,10 +145,10 @@ extension NSWindow {
 //  @IBInspectable
   public var isOverlay: Bool {
     get {
-      return self.level == Int(CGWindowLevelForKey(CGWindowLevelKey.floatingWindow))
+      return self.level.rawValue == Int(CGWindowLevelForKey(CGWindowLevelKey.floatingWindow))
     }
     set {
-      self.level = Int(CGWindowLevelForKey(newValue ? CGWindowLevelKey.floatingWindow : CGWindowLevelKey.normalWindow))
+      self.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(newValue ? CGWindowLevelKey.floatingWindow : CGWindowLevelKey.normalWindow)))
     }
   }
   
@@ -255,7 +255,7 @@ extension CGRect {
   // convert top-y coordinates (Quartz) to bottom-y coordinates (Cocoa).
   public func toCocoaFrame() -> CGRect {
     var frame = self
-    frame.origin.y = NSMaxY(NSScreen.screens()![0].frame) - NSMaxY(frame)
+    frame.origin.y = NSMaxY(NSScreen.screens[0].frame) - NSMaxY(frame)
     return frame
   }
 }

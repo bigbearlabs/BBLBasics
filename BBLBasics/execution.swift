@@ -24,7 +24,7 @@ public func periodically(every interval: TimeInterval, queue: DispatchQueue? = n
   let timer = DispatchSource.makeTimerSource(flags: DispatchSource.TimerFlags(rawValue: UInt(0)), queue: queue)
 
   let start = DispatchTime.now() + Double(0) / Double(NSEC_PER_SEC)
-  timer.scheduleRepeating(deadline: start, interval: DispatchTimeInterval.seconds(Int(interval)), leeway: DispatchTimeInterval.seconds(0))
+  timer.schedule(deadline: start, repeating: DispatchTimeInterval.seconds(Int(interval)), leeway: DispatchTimeInterval.seconds(0))
   timer.setEventHandler(handler: {
     operation()
   })
@@ -125,9 +125,9 @@ extension DispatchSource {
     let timer = DispatchSource.makeTimerSource(flags: [], queue: queue)
     
     if let repeating = repeating {
-      timer.scheduleRepeating(deadline: deadline, interval: DispatchTimeInterval.seconds(Int(repeating)), leeway: DispatchTimeInterval.seconds(0))
+      timer.schedule(deadline: deadline, repeating: DispatchTimeInterval.seconds(Int(repeating)), leeway: DispatchTimeInterval.seconds(0))
     } else {
-      timer.scheduleOneshot(deadline: deadline)
+      timer.schedule(deadline: deadline)
     }
   
     timer.setEventHandler(handler: block)

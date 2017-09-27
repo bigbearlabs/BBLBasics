@@ -70,7 +70,7 @@ extension URL {
     }
     
     let i = string.characters.index(string.startIndex, offsetBy: 1)
-    if ensureScheme && string.substring(to: i) == "/" {
+    if ensureScheme && string[..<i] == "/" {
       // we have a file path.
       self.init(string: "file://\(string.encodedString)")
       return
