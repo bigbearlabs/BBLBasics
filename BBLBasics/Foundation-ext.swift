@@ -41,7 +41,7 @@ extension Array {
         // no matches and caller specified this will be alloed.
         return nil
       } else {
-        fatalError()
+        fatalError("no matches in \(self) for \(filter)")
       }
     }
     return matches[0]
@@ -77,6 +77,16 @@ extension URL {
     }
     
     self.init(string: string)
+  }
+  
+}
+
+
+
+extension Date {
+
+  var iso8601: String {
+    return DateFormatter.string(date: self).copy() as! String
   }
   
 }
