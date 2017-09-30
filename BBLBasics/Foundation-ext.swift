@@ -85,8 +85,13 @@ extension URL {
 
 extension Date {
 
-  var iso8601: String {
-    return DateFormatter.string(date: self).copy() as! String
+  public var iso8601: String {
+    if #available(OSX 10.12, *) {
+      return ISO8601DateFormatter.string(from: self, timeZone: TimeZone.current, formatOptions: [.withInternetDateTime])
+    } else {
+      // Fallback on earlier versions
+      fatalError()
+    }
   }
   
 }
