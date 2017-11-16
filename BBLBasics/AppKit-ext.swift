@@ -33,6 +33,10 @@ extension NSResponder {
     
     var chain: [NSResponder] = []
     var responder: NSResponder? = self
+    // for windows, track responder chain from its first responder.
+    if let w = self as? NSWindow {
+      responder = w.firstResponder
+    }
     while responder != nil {
       chain.append(responder!)
       responder = responder!.nextResponder
