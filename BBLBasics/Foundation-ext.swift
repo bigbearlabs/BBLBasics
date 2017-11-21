@@ -65,11 +65,11 @@ extension Dictionary {
 extension URL {
   
   public init?(string: String, ensureScheme: Bool) {
-    guard string.characters.count > 0 else {
+    guard string.count > 0 else {
       return nil
     }
     
-    let i = string.characters.index(string.startIndex, offsetBy: 1)
+    let i = string.index(string.startIndex, offsetBy: 1)
     if ensureScheme && string[..<i] == "/" {
       // we have a file path.
       self.init(string: "file://\(string.encodedString)")
