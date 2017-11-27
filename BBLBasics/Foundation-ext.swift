@@ -79,6 +79,14 @@ extension URL {
     self.init(string: string)
   }
   
+  public var isFolder: Bool {
+    do {
+      return try FileWrapper(url: self, options: []).isDirectory
+    } catch _ {
+      return false
+    }
+  }
+  
 }
 
 
