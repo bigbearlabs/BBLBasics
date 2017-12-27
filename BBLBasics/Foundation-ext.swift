@@ -119,7 +119,7 @@ extension NSObject {
 }
 
 
-// MARK: app-level.
+// MARK: - app-level.
 
 public extension NSUserNotification {
   
@@ -136,3 +136,16 @@ public extension NSUserNotification {
 }
 
 
+
+public extension FileManager {
+  
+  public func childUrls(of directoryUrl: URL, extension: String) throws -> [URL] {
+    guard directoryUrl.isFileURL else {
+      return []
+    }
+    return try FileManager.default.contentsOfDirectory(atPath: directoryUrl.path)
+      .map { directoryUrl.appendingPathComponent($0) }
+      .filter { $0.pathExtension == `extension` }
+  }
+  
+}

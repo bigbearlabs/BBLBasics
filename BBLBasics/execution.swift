@@ -9,8 +9,8 @@
 import Foundation
 
 
+// TODO timer potentially prevents sleep -- mitigate.
 // TODO fix this global namespace pollution appropriately.
-
 public func periodically(every interval: TimeInterval, queue: DispatchQueue? = nil, operation: @escaping () -> Void) -> DispatchSourceTimer {
 
   let queue = queue ?? DispatchQueue.global(qos: .default)
