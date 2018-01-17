@@ -12,10 +12,13 @@ import Foundation
 
 extension String {
   
+  // RENAME queryEncodedString
   public var percentEncodedString: String {
-    get {
-      return self.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-    }
+    return self.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+  }
+  
+  public var queryDecodedString: String {
+    return self.removingPercentEncoding!
   }
   
   // FIXME
@@ -86,9 +89,31 @@ extension URL {
     }
   }
   
+  
+  public func isEquivalent(toUrl url: URL) -> Bool {
+    return self == url
+      // trailing slashes should not affect equivalence.
+      || self.appendingPathComponent("") == url.appendingPathComponent("")
+  }
+  
 }
 
-
+public extension Array where Element == URL {
+  
+  public func isEquivalent(toUrls urls: [URL]) -> Bool {
+    guard self.count == urls.count else {
+      return false
+    }
+    
+    let nonEquivalentItems = self.enumerated().filter { element -> Bool in
+      let (i, url) = element
+      return !url.isEquivalent(toUrl: urls[i])
+    }
+    
+    return nonEquivalentItems.isEmpty
+  }
+  
+}
 
 extension Date {
 
