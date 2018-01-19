@@ -36,18 +36,14 @@ extension String {
 
 extension Array {
   
-  public func onlyElementMatching(allowNoMatch: Bool = false, filter: (Element) -> Bool) -> Element? {
-    let matches = self.filter(filter)
-    if matches.count != 1 {
-      if matches.count == 0 && allowNoMatch {
-        // no matches and caller specified this will be alloed.
-        return nil
-      } else {
-        fatalError("no matches in \(self) for \(filter)")
-      }
+  public var firstAndOnly: Element? {
+    guard self.count <= 1 else {
+      fatalError()
     }
-    return matches[0]
+    
+    return self.first
   }
+  
 }
 
 
