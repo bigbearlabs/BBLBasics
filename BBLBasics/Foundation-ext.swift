@@ -159,6 +159,12 @@ public extension NSUserNotification {
 
 public extension FileManager {
   
+  public func directoryExists(atPath path: String) -> Bool {
+    var isDirectory = ObjCBool(false)
+    _ = fileExists(atPath: path, isDirectory: &isDirectory)
+    return isDirectory.boolValue
+  }
+  
   public func childUrls(of directoryUrl: URL, extension: String) throws -> [URL] {
     guard directoryUrl.isFileURL else {
       return []
@@ -169,3 +175,4 @@ public extension FileManager {
   }
   
 }
+
