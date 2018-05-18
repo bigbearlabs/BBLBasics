@@ -9,6 +9,14 @@
 import Foundation
 
 
+
+public func synchronised<T>(obj: AnyObject, handler: () throws -> T) rethrows -> T {
+  objc_sync_enter(obj)
+  defer { objc_sync_exit(obj) }
+  return try handler()
+}
+
+
 // TODO timer potentially prevents sleep -- mitigate.
 // TODO fix this global namespace pollution appropriately.
 public func periodically(every interval: TimeInterval, queue: DispatchQueue? = nil, operation: @escaping () -> Void) -> DispatchSourceTimer {
