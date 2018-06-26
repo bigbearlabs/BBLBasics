@@ -259,6 +259,12 @@ extension CGRect {
     frame.origin.y = NSMaxY(NSScreen.screens[0].frame) - NSMaxY(frame)
     return frame
   }
+  
+  // for compatibility with JSONEncoder / JSONDecoder.
+  public var arrayRepresentation: [[CGFloat]] {
+    return [[self.origin.x, self.origin.y], [self.size.width, self.size.height]]
+  }
+
 }
 
 
