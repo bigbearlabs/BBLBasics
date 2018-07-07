@@ -114,8 +114,8 @@ public extension Array where Element == URL {
 extension Date {
 
   public var iso8601: String {
-    if #available(OSX 10.12, *) {
-      return ISO8601DateFormatter.string(from: self, timeZone: TimeZone.current, formatOptions: [.withInternetDateTime])
+    if #available(OSX 10.13, *) {
+      return ISO8601DateFormatter.string(from: self, timeZone: TimeZone.current, formatOptions: [.withInternetDateTime, .withFractionalSeconds])
     } else {
       // Fallback on earlier versions
       fatalError()
