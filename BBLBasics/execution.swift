@@ -1,15 +1,7 @@
-//
-//  execution.swift
-//  contexter
-//
-//  Created by Andy Park on 08/06/16.
-//  Copyright © 2016 Big Bear Labs. All rights reserved.
-//
-
 import Foundation
 
 
-
+@discardableResult
 public func synchronised<T>(obj: AnyObject, handler: () throws -> T) rethrows -> T {
   objc_sync_enter(obj)
   defer { objc_sync_exit(obj) }
