@@ -117,7 +117,7 @@ extension Date {
     if #available(OSX 10.13, *) {
       return ISO8601DateFormatter.string(from: self, timeZone: TimeZone.current, formatOptions: [.withInternetDateTime, .withFractionalSeconds])
     } else {
-      // Fallback on earlier versions
+      // Fallback on earlier versions TODO
       fatalError()
     }
   }
