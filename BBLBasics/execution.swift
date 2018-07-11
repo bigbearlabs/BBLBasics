@@ -65,7 +65,7 @@ open class LastOnlyQueue {
   
   var opOnStandby: (()->())?
   
-  public init(queue: DispatchQueue = DispatchQueue(label: "\(Bundle.main.bundleIdentifier!).LastOnlyQueue"), threshold: TimeInterval = 3) {
+  public init(queue: DispatchQueue = DispatchQueue(label: "\(NSRunningApplication.current.bundleIdentifier!).LastOnlyQueue"), threshold: TimeInterval = 3) {
     self.queue = queue
     self.interval = threshold
   }

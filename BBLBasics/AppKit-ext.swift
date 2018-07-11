@@ -15,7 +15,7 @@ extension NSApplication {
   
   public var appSupportPathUrl: URL {
     let appSupportDirUrl = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
-    return appSupportDirUrl.appendingPathComponent(Bundle.main.bundleIdentifier!)
+    return appSupportDirUrl.appendingPathComponent(NSRunningApplication.current.bundleIdentifier!)
   }
   
   public var documentsPathUrl: URL {
