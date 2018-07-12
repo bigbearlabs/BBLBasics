@@ -12,8 +12,7 @@ import Foundation
 
 extension String {
   
-  // RENAME queryEncodedString
-  public var percentEncodedString: String {
+  public var queryEncodedString: String {
     return self.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
   }
   
@@ -70,7 +69,7 @@ extension URL {
     let i = string.index(string.startIndex, offsetBy: 1)
     if ensureScheme && string[..<i] == "/" {
       // we have a file path.
-      self.init(string: "file://\(string.percentEncodedString)")
+      self.init(string: "file://\(string.queryEncodedString)")
       return
     }
     
