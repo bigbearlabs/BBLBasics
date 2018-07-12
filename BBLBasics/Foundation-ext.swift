@@ -140,6 +140,22 @@ extension NSObject {
 }
 
 
+
+extension Encodable {
+  
+  public var jsonObject: Any {
+    return autoreleasepool { () -> Any in
+      let encodedData = try! JSONEncoder().encode(self)
+      let jsonObject = try! JSONSerialization.jsonObject(
+        with: encodedData)
+      return jsonObject
+    }
+  }
+  
+}
+
+
+
 // MARK: - app-level.
 
 public extension NSUserNotification {
@@ -176,4 +192,6 @@ public extension FileManager {
   }
   
 }
+
+
 
