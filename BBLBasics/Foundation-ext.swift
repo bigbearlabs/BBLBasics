@@ -78,6 +78,7 @@ extension URL {
   }
   
   public var isFolder: Bool {
+    if !self.isFileURL { return false }
     do {
       return try FileWrapper(url: self, options: []).isDirectory
     } catch _ {
