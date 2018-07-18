@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		516A99B11ED8E7EB00978A19 /* KeyViewManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516A99B01ED8E7EB00978A19 /* KeyViewManaging.swift */; };
+		517432B720FF489D00F33B65 /* NSDocument-quicklook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517432B620FF489D00F33B65 /* NSDocument-quicklook.swift */; };
 		5191A8D71E341889001B94FD /* BBLBasics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5191A8CD1E341889001B94FD /* BBLBasics.framework */; };
 		5191A8DC1E341889001B94FD /* BBLBasicsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5191A8DB1E341889001B94FD /* BBLBasicsTests.swift */; };
 		5191A8DE1E341889001B94FD /* BBLBasics.h in Headers */ = {isa = PBXBuildFile; fileRef = 5191A8D01E341889001B94FD /* BBLBasics.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		516A99B01ED8E7EB00978A19 /* KeyViewManaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyViewManaging.swift; sourceTree = "<group>"; };
+		517432B620FF489D00F33B65 /* NSDocument-quicklook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDocument-quicklook.swift"; sourceTree = "<group>"; };
 		5191A8CD1E341889001B94FD /* BBLBasics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BBLBasics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5191A8D01E341889001B94FD /* BBLBasics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBLBasics.h; sourceTree = "<group>"; };
 		5191A8D11E341889001B94FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				51DADAE11E3D784B0035D4EB /* NSArray+MapFilterReduce.m */,
 				5191A8D01E341889001B94FD /* BBLBasics.h */,
 				5191A8D11E341889001B94FD /* Info.plist */,
+				517432B620FF489D00F33B65 /* NSDocument-quicklook.swift */,
 			);
 			path = BBLBasics;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				516A99B11ED8E7EB00978A19 /* KeyViewManaging.swift in Sources */,
 				5191A8F61E3418B5001B94FD /* execution.swift in Sources */,
 				5191A8FF1E341A17001B94FD /* AppKit-ext.swift in Sources */,
+				517432B720FF489D00F33B65 /* NSDocument-quicklook.swift in Sources */,
 				51DADAE31E3D784B0035D4EB /* NSArray+MapFilterReduce.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

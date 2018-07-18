@@ -173,6 +173,42 @@ extension NSView {
 }
 
 
+extension NSImage {
+  convenience init(size: CGSize, drawnAs: () -> ()) {
+    self.init(size: size)
+    self.lockFocus()
+    drawnAs()
+    self.unlockFocus()
+  }
+}
+
+extension Array where Element: NSImage {
+  
+  public var verticallyTiledImage: NSImage? {
+    guard !self.isEmpty else { return nil }
+    
+    let maxWidth = self.map { $0.size.width } .max()!
+    let totalHeight = self.map { $0.size.height } .reduce(0) { acc, height in acc + height }
+    
+    let frameSize = CGSize(width: maxWidth, height: totalHeight)
+    
+    let compositedImage = NSImage(size: frameSize) {
+      
+      var drawY = frameSize.height
+      for image in self {
+        drawY -= image.size.height
+        let xForCenteredImage = (frameSize.width - image.size.width) / 2
+        let drawOrigin = CGPoint(x: xForCenteredImage, y: drawY)
+        image.draw(at: drawOrigin, from: .zero, operation: .sourceOver, fraction: 1.0)
+      }
+      
+    }
+    
+    return compositedImage
+  }
+  
+}
+
 
 extension CGPoint {
   public func offset(x: CGFloat, y: CGFloat) -> CGPoint {
