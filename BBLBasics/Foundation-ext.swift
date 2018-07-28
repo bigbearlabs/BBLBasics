@@ -61,6 +61,15 @@ extension Dictionary {
 
 extension URL {
   
+  public static func from(string: String, queryParameters: [String : String]) -> URL? {
+    var components = URLComponents(string: string)!
+    components.queryItems = queryParameters.map { k, v in
+      URLQueryItem(name: k, value: v)
+    }
+    return components.url
+  }
+  
+
   public init?(string: String, ensureScheme: Bool) {
     guard string.count > 0 else {
       return nil
@@ -92,6 +101,16 @@ extension URL {
       || self.appendingPathComponent("") == url.appendingPathComponent("")
   }
   
+  
+  public func queryItem(name: String) -> URLQueryItem? {
+    if let queryItems = URLComponents(url: self, resolvingAgainstBaseURL: true)?.queryItems,
+      let queryItem = queryItems
+        .first(where: { $0.name == name }) {
+      return queryItem
+    }
+    return nil
+  }
+
 }
 
 public extension Array where Element == URL {
