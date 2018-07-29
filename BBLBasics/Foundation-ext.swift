@@ -49,7 +49,7 @@ extension Array {
 
 extension Dictionary {
   
-  mutating func filterSelf( includeElement: (Dictionary.Iterator.Element) throws -> Bool) rethrows -> () {
+  mutating public func filterSelf( includeElement: (Dictionary.Iterator.Element) throws -> Bool) rethrows -> () {
     for (k, v) in self {
       if try !includeElement((k, v)) { self.removeValue(forKey: k) }
     }
@@ -163,7 +163,9 @@ extension Encodable {
   
   public var jsonObject: Any {
     return autoreleasepool { () -> Any in
-      let encodedData = try! JSONEncoder().encode(self)
+      let encoder = JSONEncoder()
+      encoder.dateEncodingStrategy = .iso8601
+      let encodedData = try! encoder.encode(self)
       let jsonObject = try! JSONSerialization.jsonObject(
         with: encodedData)
       return jsonObject
