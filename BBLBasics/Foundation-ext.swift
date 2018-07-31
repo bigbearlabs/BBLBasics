@@ -94,6 +94,31 @@ extension URL {
     }
   }
   
+  public var fileExists: Bool {
+    return
+      self.isFileURL
+      && FileManager.default.fileExists(atPath: self.path)
+  }
+  
+  
+  public func isAliasFor(destination: URL) throws -> Bool {
+    if self.fileExists {
+      let bookmarkData = try URL.bookmarkData(withContentsOf: self)
+      var bookmarkDataIsStale: Bool = false
+      let destinationUrl = try URL(resolvingBookmarkData: bookmarkData, bookmarkDataIsStale: &bookmarkDataIsStale)
+      if destinationUrl?.isEquivalent(toUrl: destination) == true {
+        return !bookmarkDataIsStale
+      }
+    }
+    return false
+  }
+
+  public func createAsAliasFor(destination: URL) throws {
+    let bookmarkData = try destination.bookmarkData(options: .suitableForBookmarkFile, includingResourceValuesForKeys: nil, relativeTo: nil)
+    
+    try URL.writeBookmarkData(bookmarkData, to: self)
+  }
+  
   
   public func isEquivalent(toUrl url: URL) -> Bool {
     return self == url
