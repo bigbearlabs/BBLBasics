@@ -106,9 +106,9 @@ extension URL {
       let bookmarkData = try URL.bookmarkData(withContentsOf: self)
       var bookmarkDataIsStale: Bool = false
       let destinationUrl = try URL(resolvingBookmarkData: bookmarkData, bookmarkDataIsStale: &bookmarkDataIsStale)
-      if destinationUrl?.isEquivalent(toUrl: destination) == true {
-        return !bookmarkDataIsStale
-      }
+      
+      return
+        destinationUrl?.isEquivalent(toUrl: destination) == true
     }
     return false
   }
