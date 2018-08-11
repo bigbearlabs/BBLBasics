@@ -84,42 +84,6 @@ extension URL {
     
     self.init(string: string)
   }
-  
-  public var isFolder: Bool {
-    if !self.isFileURL { return false }
-    do {
-      return try FileWrapper(url: self, options: []).isDirectory
-    } catch _ {
-      return false
-    }
-  }
-  
-  public var fileExists: Bool {
-    return
-      self.isFileURL
-      && FileManager.default.fileExists(atPath: self.path)
-  }
-  
-  
-  public func isAliasFor(destination: URL) throws -> Bool {
-    if self.fileExists {
-      let bookmarkData = try URL.bookmarkData(withContentsOf: self)
-      var bookmarkDataIsStale: Bool = false
-      let destinationUrl = try URL(resolvingBookmarkData: bookmarkData, bookmarkDataIsStale: &bookmarkDataIsStale)
-      
-      return
-        destinationUrl?.isEquivalent(toUrl: destination) == true
-    }
-    return false
-  }
-
-  public func createAsAliasFor(destination: URL) throws {
-    let bookmarkData = try destination.bookmarkData(options: .suitableForBookmarkFile, includingResourceValuesForKeys: nil, relativeTo: nil)
-    
-    try URL.writeBookmarkData(bookmarkData, to: self)
-  }
-  
-  
   public func isEquivalent(toUrl url: URL) -> Bool {
     return self == url
       // trailing slashes should not affect equivalence.
@@ -218,25 +182,63 @@ public extension NSUserNotification {
 }
 
 
+public extension URL {
+  var fileOperations: URLFileOperations {
+    return URLFileOperations(url: self)
+  }
+}
 
-public extension FileManager {
+public struct URLFileOperations {
   
-  public func directoryExists(atPath path: String) -> Bool {
-    var isDirectory = ObjCBool(false)
-    _ = fileExists(atPath: path, isDirectory: &isDirectory)
-    return isDirectory.boolValue
-  }
-  
-  public func childUrls(of directoryUrl: URL, extension: String) throws -> [URL] {
-    guard directoryUrl.isFileURL else {
-      return []
-    }
-    return try FileManager.default.contentsOfDirectory(atPath: directoryUrl.path)
-      .map { directoryUrl.appendingPathComponent($0) }
-      .filter { $0.pathExtension == `extension` }
-  }
+  var url: URL
   
 }
 
-
+public extension URLFileOperations {
+  
+  var isDirectory: Bool {
+    if !url.isFileURL { return false }
+    do {
+      return try FileWrapper(url: url, options: []).isDirectory
+    } catch _ {
+      return false
+    }
+  }
+    
+  var fileExists: Bool {
+    return
+      url.isFileURL
+        && FileManager.default.fileExists(atPath: url.path)
+  }
+  
+  func childUrls(extension: String? = nil) throws -> [URL] {
+    guard url.isFileURL else {
+      return []
+    }
+    return try FileManager.default.contentsOfDirectory(atPath: url.path)
+      .map { url.appendingPathComponent($0) }
+      .filter { `extension` != nil ? $0.pathExtension == `extension` : true }
+  }
+  
+  // MARK: - aliasing
+    
+  func isAliasFor(destination: URL) throws -> Bool {
+    if self.fileExists {
+      let bookmarkData = try URL.bookmarkData(withContentsOf: url)
+      var bookmarkDataIsStale: Bool = false
+      let destinationUrl = try URL(resolvingBookmarkData: bookmarkData, bookmarkDataIsStale: &bookmarkDataIsStale)
+      
+      return
+        destinationUrl?.isEquivalent(toUrl: destination) == true
+    }
+    return false
+  }
+    
+  func createAsAliasFor(destination: URL) throws {
+    let bookmarkData = try destination.bookmarkData(options: .suitableForBookmarkFile, includingResourceValuesForKeys: nil, relativeTo: nil)
+    
+    try URL.writeBookmarkData(bookmarkData, to: url)
+  }
+  
+}
 
