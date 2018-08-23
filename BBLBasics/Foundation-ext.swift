@@ -161,8 +161,8 @@ extension Encodable {
     }
   }
   
-  public func jsonString() throws -> String {
-    return String(data: try JSONSerialization.data(withJSONObject: self.jsonObject, options: [.prettyPrinted]), encoding: .utf8)!
+  public func jsonString(options: [JSONSerialization.WritingOptions] = []) throws -> String {
+    return String(data: try JSONSerialization.data(withJSONObject: self.jsonObject, options: []), encoding: .utf8)!
   }
 }
 
