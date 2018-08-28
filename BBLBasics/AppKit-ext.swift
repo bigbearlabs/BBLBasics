@@ -173,13 +173,30 @@ extension NSView {
 }
 
 
-extension NSImage {
+public extension NSImage {
+  
   convenience init(size: CGSize, drawnAs: () -> ()) {
     self.init(size: size)
     self.lockFocus()
     drawnAs()
     self.unlockFocus()
   }
+    
+  /// Produce Data from this NSImage with the contained FileType image information.
+  /// credit: parrotkit
+  func data(for type: NSBitmapImageRep.FileType) -> Data? {
+    guard
+      let tiff = self.tiffRepresentation,
+      let rep = NSBitmapImageRep(data: tiff),
+      let dat = rep.representation(using: type, properties: [:])
+      else { return nil }
+    return dat
+  }
+  
+  var pngRepresentation: Data? {
+    return self.data(for: .png)
+  }
+
 }
 
 extension Array where Element: NSImage {

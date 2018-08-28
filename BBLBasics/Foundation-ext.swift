@@ -199,6 +199,8 @@ public struct URLFileOperations {
 
 public extension URLFileOperations {
   
+  // MARK: - querying
+  
   var isDirectory: Bool {
     if !url.isFileURL { return false }
     do {
@@ -223,6 +225,7 @@ public extension URLFileOperations {
       .filter { `extension` != nil ? $0.pathExtension == `extension` : true }
   }
   
+  
   // MARK: - aliasing
     
   func isAliasFor(destination: URL) throws -> Bool {
@@ -242,6 +245,33 @@ public extension URLFileOperations {
     
     try URL.writeBookmarkData(bookmarkData, to: url)
   }
+ 
   
+  // MARK: - file access
+  
+  func write(data: Data?, completionHandler: (Error?) -> ()) {
+    let parent = self.url.deletingLastPathComponent()
+    if !parent.fileOperations.fileExists {
+      parent.fileOperations.createDirectory()
+    }
+    guard parent.fileOperations.isDirectory else {
+//      completionHandler(error)  // TODO
+      fatalError()
+    }
+    
+    try! data?.write(to: self.url, options: [])
+    
+    // TODO errors
+    
+    completionHandler(nil)
+  }
+  
+  func read(completionHandler: (Data, Error?) -> ()) {
+    fatalError("not implemented!")
+  }
+  
+  func createDirectory() {
+    try! FileManager.default.createDirectory(at: self.url, withIntermediateDirectories: true, attributes: [:])
+  }
 }
 
