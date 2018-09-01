@@ -123,7 +123,9 @@ extension Date {
 
   public var iso8601: String {
     if #available(OSX 10.13, *) {
-      return ISO8601DateFormatter.string(from: self, timeZone: TimeZone.current, formatOptions: [.withInternetDateTime, .withFractionalSeconds])
+//      return ISO8601DateFormatter.string(from: self, timeZone: TimeZone(abbreviation: "GMT")!, formatOptions: [.withInternetDateTime, .withFractionalSeconds])
+      // BUG!! fractional seconds result in parsing back to date breaking.
+      return ISO8601DateFormatter.string(from: self, timeZone: TimeZone.current, formatOptions: [.withInternetDateTime])
     } else {
       // Fallback on earlier versions TODO
       fatalError()
