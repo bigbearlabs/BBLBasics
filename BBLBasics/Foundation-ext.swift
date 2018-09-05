@@ -123,9 +123,7 @@ extension Date {
 
   public var iso8601: String {
     if #available(OSX 10.13, *) {
-//      return ISO8601DateFormatter.string(from: self, timeZone: TimeZone(abbreviation: "GMT")!, formatOptions: [.withInternetDateTime, .withFractionalSeconds])
-      // BUG!! fractional seconds result in parsing back to date breaking.
-      return ISO8601DateFormatter.string(from: self, timeZone: TimeZone.current, formatOptions: [.withInternetDateTime])
+      return ISO8601DateFormatter.string(from: self, timeZone: TimeZone.current, formatOptions: [.withInternetDateTime, .withFractionalSeconds])
     } else {
       // Fallback on earlier versions TODO
       fatalError()
@@ -281,14 +279,25 @@ public extension URLFileOperations {
 
 
 @objc(Iso8601ToLocalDateTransformer)
-public class Iso8601ToLocalDateTransformer: ValueTransformer {
+@available(OSX 10.13, *)
+open class Iso8601ToLocalDateTransformer: ValueTransformer {
   
-  override public func transformedValue(_ value: Any?) -> Any? {
-    if let value = value as? String {
-      let date = ISO8601DateFormatter().date(from: value)
-      return date
+  override open func transformedValue(_ value: Any?) -> Any? {
+    if let iso8601String = value as? String {
+      let f = ISO8601DateFormatter()
+      guard let date = f.date(from: iso8601String) else {
+        return nil
+      }
+      
+      // format into a human-friendly string.
+      let f2 = DateFormatter()
+      f2.timeStyle = .medium
+      f2.dateStyle = .medium
+      f2.formattingContext = .listItem
+      f2.doesRelativeDateFormatting = true
+      return f2.string(from: date)
     }
-    
+
     return nil
   }
   
