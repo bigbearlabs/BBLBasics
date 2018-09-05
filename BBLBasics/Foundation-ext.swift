@@ -277,3 +277,20 @@ public extension URLFileOperations {
   }
 }
 
+
+
+
+@objc(Iso8601ToLocalDateTransformer)
+public class Iso8601ToLocalDateTransformer: ValueTransformer {
+  
+  override public func transformedValue(_ value: Any?) -> Any? {
+    if let value = value as? String {
+      let date = ISO8601DateFormatter().date(from: value)
+      return date
+    }
+    
+    return nil
+  }
+  
+}
+
