@@ -27,9 +27,9 @@ extension NSApplication {
 
 
 
-extension NSResponder {
+public extension NSResponder {
   
-  public var responderChain: [NSResponder] {
+  var responderChain: [NSResponder] {
     
     var chain: [NSResponder] = []
     var responder: NSResponder? = self
@@ -45,7 +45,7 @@ extension NSResponder {
     return chain
   }
   
-  public func insertAsNextResponder(_ responder: NSResponder) {
+  func insertAsNextResponder(_ responder: NSResponder) {
     if responder == self {
       // asked to make myself my next responder, doing nothing.
       return
@@ -59,7 +59,7 @@ extension NSResponder {
     }
   }
   
-  public func dispatchAction(_ action: Selector, sender: Any?) {
+  func dispatch(action: Selector, sender: Any?, target: Any? = nil) {
     // #sendAction scan order according to docs:
     // key window's chain
     // -> key window's delegate's chain
@@ -71,10 +71,18 @@ extension NSResponder {
       [NSApp.keyWindow?.responderChain as Any, NSApp.keyWindow?.delegate as Any, NSApp.mainWindow?.responderChain as Any, NSApp.mainWindow?.delegate as Any, NSApp.responderChain, NSApp.delegate as Any]
     debug("will dispatch \(action) to the first handling object in chain: \(dispatchPath)")
     
-    NSApp.sendAction(action, to: nil, from: sender)
+    NSApp.sendAction(action, to: target, from: sender)
   }
 
+  func dispatch(action: Selector, parameters: IBActionParameters, target: Any? = nil) {
+    dispatch(action: action, sender: parameters, target: target)
+  }
+  
 }
+
+public protocol IBActionParameters {
+}
+
 
 
 private func debug(_ msg: Any?, _ hash_function: String = "", tag: String = "") {
