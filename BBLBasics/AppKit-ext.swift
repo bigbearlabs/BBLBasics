@@ -239,13 +239,15 @@ extension Array where Element: NSImage {
     let frameSize = CGSize(width: maxWidth, height: totalHeight)
     
     let compositedImage = NSImage(size: frameSize) {
-      
+
       var drawY = frameSize.height
       for image in self {
-        drawY -= image.size.height
-        let xForCenteredImage = (frameSize.width - image.size.width) / 2
-        let drawOrigin = CGPoint(x: xForCenteredImage, y: drawY)
-        image.draw(at: drawOrigin, from: .zero, operation: .sourceOver, fraction: 1.0)
+        autoreleasepool {
+          drawY -= image.size.height
+          let xForCenteredImage = (frameSize.width - image.size.width) / 2
+          let drawOrigin = CGPoint(x: xForCenteredImage, y: drawY)
+          image.draw(at: drawOrigin, from: .zero, operation: .sourceOver, fraction: 1.0)
+        }
       }
       
     }
