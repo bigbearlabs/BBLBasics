@@ -271,27 +271,31 @@ public extension URLFileOperations {
   
   func write(data: Data?, completionHandler: (Error?) -> ()) {
     let parent = self.url.deletingLastPathComponent()
-    if !parent.fileOperations.fileExists {
-      parent.fileOperations.createDirectory()
+    
+    var err: Error? = nil
+    do {
+      if !parent.fileOperations.fileExists {
+        try parent.fileOperations.createDirectory()
+      }
+      guard parent.fileOperations.isDirectory else {
+        fatalError()
+      }
+      
+      try data?.write(to: self.url, options: [])
     }
-    guard parent.fileOperations.isDirectory else {
-//      completionHandler(error)  // TODO
-      fatalError()
+    catch let e {
+      err = e
     }
     
-    try! data?.write(to: self.url, options: [])
-    
-    // TODO errors
-    
-    completionHandler(nil)
+    completionHandler(err)
   }
   
   func read(completionHandler: (Data, Error?) -> ()) {
     fatalError("not implemented!")
   }
   
-  func createDirectory() {
-    try! FileManager.default.createDirectory(at: self.url, withIntermediateDirectories: true, attributes: [:])
+  func createDirectory() throws {
+    try FileManager.default.createDirectory(at: self.url, withIntermediateDirectories: true, attributes: [:])
   }
 }
 
