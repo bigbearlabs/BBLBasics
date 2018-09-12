@@ -83,7 +83,9 @@ extension URL {
     }
     
     self.init(string: string)
+    return
   }
+  
   public func isEquivalent(toUrl url: URL) -> Bool {
     return self == url
       // trailing slashes should not affect equivalence.
