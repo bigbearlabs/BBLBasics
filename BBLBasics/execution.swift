@@ -58,7 +58,7 @@ public func exec(delay: TimeInterval, operation: @escaping () -> Void) {
 
 
 
-open class LastOnlyQueue {
+open class LastOnlyQueue {  // RENAME polling queue.
   
   let queue: DispatchQueue
   let interval: TimeInterval
@@ -81,8 +81,6 @@ open class LastOnlyQueue {
     self.poller = periodically(every: self.interval, queue: queue) { [weak self] in
       let op = self?.opOnStandby
       
-      self?.opOnStandby = nil
-      
       if op != nil { op!() }
     }
   }
@@ -103,12 +101,12 @@ open class LastOnlyQueue {
   open func pollingAsync(closure: @escaping ()->()) {
     queue.async { [unowned self] in
       if self.poller != nil {
-        // we are polling, so just drop the op so it picks it up.
-        print("will supersede any existing op in \(self)")
-        self.opOnStandby = closure
+        fatalError("bad call")
       }
       else {
+        self.opOnStandby = closure
         self.poll()
+        // first run.
         closure()
       }
     }
