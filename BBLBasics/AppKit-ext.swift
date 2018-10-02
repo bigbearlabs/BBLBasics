@@ -103,14 +103,14 @@ extension NSMenuItem {
 extension NSViewController {
   public func findChildViewController(_ type: AnyClass) -> NSViewController? {
     // try to find match in my children.
-    for child in self.childViewControllers {
+    for child in self.children {
       if child.isKind(of: type) {
         return child
       }
     }
     
     // recursively call on children.
-    for child in self.childViewControllers {
+    for child in self.children {
       if let result = child.findChildViewController(type) {
         return result
       }

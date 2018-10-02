@@ -171,7 +171,7 @@
 					5191A8CC1E341889001B94FD = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = XK44TD8U4S;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 					5191A8D51E341889001B94FD = {
@@ -382,7 +382,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -404,7 +404,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bigbearlabs.BBLBasics;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

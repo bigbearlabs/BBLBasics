@@ -12,6 +12,6 @@ extension DocumentThumbnailProvider {
   }
   
   private var thumbnailData: Data {
-    return self.thumbnailImage?.tiffRepresentation ?? NSImage(named: NSImage.Name.caution)!.tiffRepresentation!
+    return self.thumbnailImage?.tiffRepresentation ?? NSImage(named: NSImage.cautionName)!.tiffRepresentation!
   }
 }

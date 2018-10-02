@@ -257,7 +257,7 @@ public extension URLFileOperations {
       let destinationUrl = try URL(resolvingBookmarkData: bookmarkData, bookmarkDataIsStale: &bookmarkDataIsStale)
       
       return
-        destinationUrl?.isEquivalent(toUrl: destination) == true
+        destinationUrl.isEquivalent(toUrl: destination) == true
     }
     return false
   }
