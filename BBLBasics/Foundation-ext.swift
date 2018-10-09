@@ -59,7 +59,7 @@ extension Dictionary {
 
 
 
-extension URL {
+public extension URL {
   
   public static func from(string: String, queryParameters: [String : String]) -> URL? {
     var components = URLComponents(string: string)!
@@ -102,6 +102,14 @@ extension URL {
     return nil
   }
 
+  var removingTrailingSlash: URL {
+    var str = self.absoluteString
+    if str.reversed().starts(with: "/") {
+      str.removeLast()
+      return URL(string: str)!
+    }
+    return self
+  }
 }
 
 public extension Array where Element == URL {
