@@ -102,7 +102,8 @@ public extension URL {
   public func isEquivalent(toUrl url: URL) -> Bool {
     return self == url
       // trailing slashes should not affect equivalence.
-      || self.appendingPathComponent("") == url.appendingPathComponent("")
+      // also compare the strings to work around some mysterious equality failure cases seen in the wild.
+      || self.appendingPathComponent("").absoluteString == url.appendingPathComponent("").absoluteString
   }
   
   
