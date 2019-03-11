@@ -320,6 +320,20 @@ public extension URLFileOperations {
   func createDirectory() throws {
     try FileManager.default.createDirectory(at: self.url, withIntermediateDirectories: true, attributes: [:])
   }
+  
+  // MARK: -
+  
+  func ensureAsDirectory() throws {
+    if self.isDirectory {
+      return
+    }
+    
+    guard !self.fileExists else {
+      fatalError() // TODO throw instead.
+    }
+    
+    try self.createDirectory()
+  }
 }
 
 
@@ -348,5 +362,26 @@ open class Iso8601ToLocalDateTransformer: ValueTransformer {
     return nil
   }
   
+}
+
+
+
+public extension Bundle {
+  // Name of the app - title under the icon.
+  var displayName: String? {
+    return object(forInfoDictionaryKey: "CFBundleDisplayName") as? String ??
+      object(forInfoDictionaryKey: "CFBundleName") as? String
+  }
+}
+
+
+
+public extension Sequence {
+  
+  func reject(_ isExcluded: (Element) -> Bool) -> [Element] {
+    return self.filter {
+      isExcluded($0) == false
+    }
+  }
 }
 
