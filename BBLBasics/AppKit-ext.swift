@@ -11,6 +11,15 @@ import AppKit
 
 
 
+public extension NSWorkspace {
+  func runningApplication(pid: pid_t) -> NSRunningApplication? {
+    return self.runningApplications.first {
+      $0.processIdentifier == pid
+    }
+  }
+}
+
+
 extension NSApplication {
   
   public var appSupportPathUrl: URL {
