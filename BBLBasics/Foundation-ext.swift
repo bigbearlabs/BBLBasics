@@ -340,8 +340,6 @@ public extension URLFileOperations {
 
 
 
-@objc(Iso8601ToLocalDateTransformer)
-@available(OSX 10.13, *)
 open class Iso8601ToLocalDateTransformer: ValueTransformer {
   
   override open func transformedValue(_ value: Any?) -> Any? {
