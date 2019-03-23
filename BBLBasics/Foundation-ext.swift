@@ -322,6 +322,13 @@ public extension URLFileOperations {
     try FileManager.default.createDirectory(at: self.url, withIntermediateDirectories: true, attributes: [:])
   }
   
+  func hideExtension() throws {
+    try FileManager.default.setAttributes([
+        FileAttributeKey.extensionHidden : true
+      ],
+      ofItemAtPath: self.url.path)
+  }
+  
   // MARK: -
   
   func ensureAsDirectory() throws {
