@@ -374,9 +374,8 @@ open class Iso8601ToLocalDateTransformer: ValueTransformer {
 
 public extension Bundle {
   // Name of the app - title under the icon.
-  var displayName: String? {
-    return object(forInfoDictionaryKey: "CFBundleDisplayName") as? String ??
-      object(forInfoDictionaryKey: "CFBundleName") as? String
+  var displayName: String {
+    return FileManager.default.displayName(atPath: self.bundleURL.path)
   }
 }
 
@@ -389,5 +388,6 @@ public extension Sequence {
       isExcluded($0) == false
     }
   }
+  
 }
 
