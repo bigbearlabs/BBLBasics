@@ -91,7 +91,7 @@ public extension URL {
     let i = string.index(string.startIndex, offsetBy: 1)
     if ensureScheme && string[..<i] == "/" {
       // we have a file path.
-      self.init(string: "file://\(string.queryEncodedString)")
+      self.init(string: "file://" + string.queryEncodedString)
       return
     }
     
