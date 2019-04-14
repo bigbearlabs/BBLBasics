@@ -74,7 +74,7 @@ extension Dictionary {
 
 public extension URL {
   
-  public static func from(string: String, queryParameters: [String : String]) -> URL? {
+  static func from(string: String, queryParameters: [String : String]) -> URL? {
     var components = URLComponents(string: string)!
     components.queryItems = queryParameters.map { k, v in
       URLQueryItem(name: k, value: v)
@@ -83,7 +83,7 @@ public extension URL {
   }
   
 
-  public init?(string: String, ensureScheme: Bool) {
+  init?(string: String, ensureScheme: Bool) {
     guard string.count > 0 else {
       return nil
     }
@@ -99,7 +99,7 @@ public extension URL {
     return
   }
   
-  public func isEquivalent(toUrl url: URL) -> Bool {
+  func isEquivalent(toUrl url: URL) -> Bool {
     return self == url
       // trailing slashes should not affect equivalence.
       // also compare the strings to work around some mysterious equality failure cases seen in the wild.
@@ -107,7 +107,7 @@ public extension URL {
   }
   
   
-  public func queryItem(name: String) -> URLQueryItem? {
+  func queryItem(name: String) -> URLQueryItem? {
     if let queryItems = URLComponents(url: self, resolvingAgainstBaseURL: true)?.queryItems,
       let queryItem = queryItems
         .first(where: { $0.name == name }) {
@@ -128,7 +128,7 @@ public extension URL {
 
 public extension Array where Element == URL {
   
-  public func isEquivalent(toUrls urls: [URL]) -> Bool {
+  func isEquivalent(toUrls urls: [URL]) -> Bool {
     guard self.count == urls.count else {
       return false
     }
@@ -217,7 +217,7 @@ extension Encodable {
 public extension NSUserNotification {
   
   // stolen from https://github.com/vojto/NiceKit/blob/a7487c32e80b16d0ded8095c3366e7c29cfae917/Pod/Classes/Mac/NSUserNotification%2BAdditions.swift
-  public static func deliver(_ title: String, text: String) {
+  static func deliver(_ title: String, text: String) {
     let center = NSUserNotificationCenter.default
     let notification = NSUserNotification()
     
