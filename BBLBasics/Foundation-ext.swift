@@ -342,6 +342,13 @@ public extension URLFileOperations {
     
     try self.createDirectory()
   }
+  
+  func showInFinder() {
+    NSWorkspace.shared.activateFileViewerSelecting([self.url])
+    
+    // FIXME when url already shown in a finder window in another space, this can silently do nothing.
+    // best way to handle this is probably to bring-to-space when necessary.
+  }
 }
 
 
