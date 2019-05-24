@@ -290,13 +290,6 @@ extension CGRect {
   public var y: CGFloat {
     return self.origin.y
   }
-  public var width: CGFloat {
-    return self.size.width
-  }
-  public var height: CGFloat {
-    return self.size.height
-  }
-  
   
   public func widthChangedTo(_ width: CGFloat, pinning: PinnedEdge) -> CGRect {
     let xOffset: CGFloat
