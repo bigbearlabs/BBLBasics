@@ -197,6 +197,11 @@ extension NSWindow {
 
 extension NSView {
   
+  public convenience init(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) {
+    let frame = CGRect(x: x, y: y, width: width, height: height)
+    self.init(frame: frame)
+  }
+
   public func addSubview(_ subview: NSView, fit: Bool) {
     self.addSubview(subview)
     if fit {
