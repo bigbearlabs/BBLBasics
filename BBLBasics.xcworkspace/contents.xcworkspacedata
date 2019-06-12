@@ -2,10 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:ViewPlayground.playground">
-   </FileRef>
-   <FileRef
-      location = "group:WindowAdornmentExample/WindowAdornmentExample.xcodeproj">
+      location = "group:../Adornment/Adornment.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:BBLBasics.xcodeproj">
