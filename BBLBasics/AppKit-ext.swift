@@ -195,24 +195,29 @@ extension NSWindow {
 
 
 
-extension NSView {
+public extension NSView {
   
-  public convenience init(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) {
+  convenience init(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) {
     let frame = CGRect(x: x, y: y, width: width, height: height)
     self.init(frame: frame)
   }
 
-  public func addSubview(_ subview: NSView, fit: Bool) {
+  func addSubview(_ subview: NSView, fit: Bool) {
     self.addSubview(subview)
     if fit {
       subview.frame = self.bounds
     }
   }
   
-  public func removeAllSubviews() {
+  func removeAllSubviews() {
     self.subviews.forEach { $0.removeFromSuperview() }
   }
   
+  func shiftBy(dx: CGFloat, dy: CGFloat) -> NSView {
+    self.frame = self.frame.offsetBy(dx: dx, dy: dy)
+    return self
+  }
+
 }
 
 
@@ -278,6 +283,7 @@ extension CGPoint {
   }
 }
 
+
 extension CGRect {
   
   public init(centre: CGPoint, size: CGSize) {
@@ -286,14 +292,7 @@ extension CGRect {
   }
 
   public func modified(delta: CGRect) -> CGRect {
-    return CGRect(x: self.x + delta.x, y: self.y + delta.y, width: self.width + delta.width, height: self.height + delta.height)
-  }
-  
-  public var x: CGFloat {
-    return self.origin.x
-  }
-  public var y: CGFloat {
-    return self.origin.y
+    return CGRect(x: self.minX + delta.minX, y: self.minY + delta.minY, width: self.width + delta.width, height: self.height + delta.height)
   }
   
   public func widthChangedTo(_ width: CGFloat, pinning: PinnedEdge) -> CGRect {
@@ -324,13 +323,22 @@ extension CGRect {
     let delta: CGPoint
     switch edge {
     case .maxX:
-      delta = CGPoint(x: relativeTo.x + relativeTo.width - self.x, y: relativeTo.y - self.y)
+      delta = CGPoint(x: relativeTo.minX + relativeTo.width - self.minX, y: relativeTo.minY - self.minY)
     default:
       fatalError()
     }
     return self.offsetBy(dx: delta.x, dy: delta.y)
   }
   
+  public var topLeft: CGPoint {
+    return self.origin.offset(x: 0, y: self.height)
+  }
+  
+  public func offsetTopLeft(to point: CGPoint) -> CGRect {
+    let topLeft = self.topLeft
+    return self.offsetBy(dx: point.x - topLeft.x, dy: point.y - topLeft.y)
+  }
+
   
   public enum PinnedEdge {
     case left

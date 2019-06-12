@@ -36,3 +36,20 @@ public func window() -> NSWindow {
   
   return window
 }
+
+
+
+public class ButtonHolder {
+  public var button: NSButton!
+  let onClick: (Any?) -> Void
+  
+  public init(title: String, onClick: @escaping (Any?) -> Void) {
+    self.onClick = onClick
+    let button = NSButton(title: title, target: self, action: #selector(buttonClicked(_:)))
+    self.button = button
+  }
+  
+  @IBAction func buttonClicked(_ sender: Any?) {
+    self.onClick(sender)
+  }
+}
