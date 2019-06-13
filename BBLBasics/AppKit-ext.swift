@@ -147,7 +147,7 @@ extension NSWindow {
   
     
   @IBInspectable
-  public var transparent: Bool {
+  public var isTransparent: Bool {
     get {
       return
         !self.isOpaque
