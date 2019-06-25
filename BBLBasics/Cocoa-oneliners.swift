@@ -1,6 +1,16 @@
 import Cocoa
 
 
+
+public func viewController(view: NSView? = nil) -> NSViewController {
+  let view = view ?? NSView(frame: NSRect(x: 0, y: 0, width: 200, height: 400))
+  
+  let vc = NSViewController(nibName: nil, bundle: nil)
+  vc.view = view
+  return vc
+}
+
+
 public func windowController() -> NSWindowController {
   return NSWindowController(window: window())
 }
