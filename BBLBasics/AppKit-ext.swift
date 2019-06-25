@@ -217,7 +217,17 @@ public extension NSView {
     self.frame = self.frame.offsetBy(dx: dx, dy: dy)
     return self
   }
-
+  
+  var image: NSImage {
+    let viewBounds = self.bounds
+    let imageRep = self.bitmapImageRepForCachingDisplay(in: viewBounds)!
+    imageRep.size = viewBounds.size
+    self.cacheDisplay(in: viewBounds, to: imageRep)
+    let image = NSImage(size: viewBounds.size)
+    image.addRepresentation(imageRep)
+    return image
+  }
+  
 }
 
 
