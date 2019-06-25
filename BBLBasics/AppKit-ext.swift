@@ -171,14 +171,12 @@ extension NSWindow {
   }
   
   
-  public var image: NSImage {
-    let windowNumber = UInt32(self.windowNumber)
-    if let image = CGWindowListCreateImage(.zero, [.optionIncludingWindow], windowNumber, CGWindowImageOption.nominalResolution) {
-      return NSImage(cgImage: image, size: CGSize(width: image.width, height: image.height))
+  public var image: NSImage? {
+    if let image = cgImage(windowNumber: CGWindowID(self.windowNumber)) {
+      return NSImage(cgImage: image, size: .zero)
     }
-    else {
-      fatalError()
-    }
+    
+    return nil
   }
 
 
@@ -377,3 +375,19 @@ extension CGRect {
 }
 
 
+
+// MARK: - not part of Cocoa.framework, but nowhere else to put it yet.
+
+public func cgImage(windowNumber: CGWindowID) -> CGImage? {
+  return CGWindowListCreateImage(
+    .null,
+    [.optionIncludingWindow],
+    windowNumber,
+    .nominalResolution)
+}
+
+public extension CGImage {
+  var size: CGSize {
+    return CGSize(width: self.width, height: self.height)
+  }
+}
