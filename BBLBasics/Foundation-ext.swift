@@ -30,7 +30,24 @@ extension String {
       self
         .replacingOccurrences(of: "\n", with: "\(indentation)\n")
   }
+  
 }
+
+
+// https://stackoverflow.com/questions/29365145/how-can-i-encode-a-string-to-base64-in-swift
+public extension String {
+  /// Encode a String to Base64
+  func toBase64() -> String {
+    return Data(self.utf8).base64EncodedString()
+  }
+  
+  /// Decode a String from Base64. Returns nil if unsuccessful.
+  func fromBase64() -> String? {
+    guard let data = Data(base64Encoded: self) else { return nil }
+    return String(data: data, encoding: .utf8)
+  }
+}
+
 
 
 extension Array {
