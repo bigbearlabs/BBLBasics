@@ -263,9 +263,9 @@ public extension URLFileOperations {
   // MARK: - querying
   
   var isDirectory: Bool {
-    if !url.isFileURL { return false }
     do {
-      return try FileWrapper(url: url, options: []).isDirectory
+      return try (self.fileExists
+        && FileWrapper(url: url, options: []).isDirectory)
     } catch _ {
       return false
     }
