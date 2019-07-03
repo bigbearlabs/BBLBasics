@@ -100,10 +100,26 @@ private func debug(_ msg: Any?, _ hash_function: String = "", tag: String = "") 
 }
 
 
+public extension NSMenu {
+  
+  func inline(menuItems: [NSMenuItem], for templateItem: NSMenuItem) {
+    
+    var items = self.items
+    if let i = items.firstIndex(of: templateItem) {
+      let rangeOfTemplate = i..<i+1
+      items.replaceSubrange(rangeOfTemplate, with: menuItems)
+      
+      self.items = items
+    }
+  }
+  
+}
+
+
 extension NSMenuItem {
   public func performAction() {
     let menu = self.menu
-    menu?.performActionForItem(at: menu!.index(of: self))
+    menu!.performActionForItem(at: menu!.index(of: self))
   }
 }
 
