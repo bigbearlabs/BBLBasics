@@ -1,12 +1,3 @@
-
-//
-//  AppKit-ext.swift
-//  contexter
-//
-//  Created by Andy Park on 30/06/2016.
-//  Copyright © 2016 Big Bear Labs. All rights reserved.
-//
-
 import AppKit
 
 
@@ -109,8 +100,9 @@ extension NSMenuItem {
 
 
 
-extension NSViewController {
-  public func findChildViewController(_ type: AnyClass) -> NSViewController? {
+public extension NSViewController {
+  
+  func findChildViewController(_ type: AnyClass) -> NSViewController? {
     // try to find match in my children.
     for child in self.children {
       if child.isKind(of: type) {
@@ -127,6 +119,7 @@ extension NSViewController {
     
     return nil
   }
+  
 }
 
 
