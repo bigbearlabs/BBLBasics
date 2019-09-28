@@ -102,6 +102,13 @@ private func debug(_ msg: Any?, _ hash_function: String = "", tag: String = "") 
 
 public extension NSMenu {
   
+  func addAll(items: [NSMenuItem]) {
+    for item in items {
+      self.addItem(item)
+    }
+  }
+  
+  // TODO revise so inlined menu items can be updated.
   func inline(menuItems: [NSMenuItem], for templateItem: NSMenuItem) {
     
     var items = self.items
@@ -390,6 +397,18 @@ extension CGRect {
 
 }
 
+
+public extension NSRect {
+  
+  var topRight: NSPoint {
+    return self.origin.offset(x: self.size.width, y: self.size.height)
+  }
+  
+  init(topRight: NSPoint, width: CGFloat, height: CGFloat) {
+    self.init(x: topRight.x - width, y: topRight.y - height, width: width, height: height)
+  }
+  
+}
 
 
 // MARK: - not part of Cocoa.framework, but nowhere else to put it yet.
