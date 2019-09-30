@@ -159,3 +159,52 @@ public class QueuePool {
   }
   
 }
+
+
+
+public class QuotaBasedQueue {
+
+  /// maximum number of operations to be in-flight.
+  /// any operations for the same id dispatched when quota exceeded will have its fallback
+  /// closure executed instead.
+  let quota: Int
+
+  
+  var inFlightCountsByOperationId: [String : Int] = [:]
+  
+  
+  let queue: DispatchQueue
+  
+  
+  public init(quota: Int, queue: DispatchQueue) {
+    self.quota = quota
+    self.queue = queue
+  }
+  
+  
+  public func async(
+    operationId: String,
+    operation: @escaping () -> Void,
+    whenQuotaExhausted: @escaping () -> Void) {
+    
+    self.queue.async { [unowned self] in
+      
+      let count = self.inFlightCountsByOperationId[operationId] ?? 0
+      guard count < self.quota else {
+        // in flight quota is exhausted, will execute the fallback closure instea.
+        
+        whenQuotaExhausted()
+        
+        return
+      }
+     
+      self.inFlightCountsByOperationId[operationId] = count + 1
+      
+      operation()
+
+      self.inFlightCountsByOperationId[operationId] = count
+    }
+  }
+  
+}
+
