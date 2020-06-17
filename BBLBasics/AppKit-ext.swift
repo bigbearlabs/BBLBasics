@@ -309,7 +309,7 @@ extension CGRect {
   public func heightChangedTo(_ height: CGFloat, pinning: PinnedEdge) -> CGRect {
     let yOffset: CGFloat
     switch pinning {
-    case .top:
+    case .bottom:
       yOffset = self.size.height - height
     default:
       yOffset = 0
