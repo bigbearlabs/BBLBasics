@@ -283,7 +283,7 @@ extension CGPoint {
 }
 
 
-extension CGRect {
+public extension CGRect {
   
   public init(centre: CGPoint, size: CGSize) {
     let origin = centre.offset(x: -1 * size.width/2, y: -1 * size.height/2)
@@ -327,6 +327,12 @@ extension CGRect {
       fatalError()
     }
     return self.offsetBy(dx: delta.x, dy: delta.y)
+  }
+  
+  func centred(in areaFrame: CGRect) -> CGRect {
+    let screenCentre = areaFrame.centre
+    let newFrame = self.offsetBy(dx: screenCentre.x - self.centre.x, dy: screenCentre.y - self.centre.y)
+    return newFrame
   }
   
   public var topLeft: CGPoint {
