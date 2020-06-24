@@ -285,16 +285,16 @@ extension CGPoint {
 
 public extension CGRect {
   
-  public init(centre: CGPoint, size: CGSize) {
+  init(centre: CGPoint, size: CGSize) {
     let origin = centre.offset(x: -1 * size.width/2, y: -1 * size.height/2)
     self.init(origin: origin, size: size)
   }
 
-  public func modified(delta: CGRect) -> CGRect {
+  func modified(delta: CGRect) -> CGRect {
     return CGRect(x: self.minX + delta.minX, y: self.minY + delta.minY, width: self.width + delta.width, height: self.height + delta.height)
   }
   
-  public func widthChangedTo(_ width: CGFloat, pinning: PinnedEdge) -> CGRect {
+  func widthChangedTo(_ width: CGFloat, pinning: PinnedEdge) -> CGRect {
     let xOffset: CGFloat
     switch pinning {
     case .right:
@@ -306,7 +306,7 @@ public extension CGRect {
     return CGRect(x: self.origin.x + xOffset, y: self.origin.y, width: width, height: self.size.height)
   }
   
-  public func heightChangedTo(_ height: CGFloat, pinning: PinnedEdge) -> CGRect {
+  func heightChangedTo(_ height: CGFloat, pinning: PinnedEdge) -> CGRect {
     let yOffset: CGFloat
     switch pinning {
     case .bottom:
@@ -318,7 +318,7 @@ public extension CGRect {
     return CGRect(x: self.origin.x, y: self.origin.y + yOffset, width: self.size.width, height: height)
   }
   
-  public func positioned(relativeTo: CGRect, edge: NSRectEdge) -> CGRect {
+  func positioned(relativeTo: CGRect, edge: NSRectEdge) -> CGRect {
     let delta: CGPoint
     switch edge {
     case .maxX:
@@ -335,17 +335,17 @@ public extension CGRect {
     return newFrame
   }
   
-  public var topLeft: CGPoint {
+  var topLeft: CGPoint {
     return self.origin.offset(x: 0, y: self.height)
   }
   
-  public func offsetTopLeft(to point: CGPoint) -> CGRect {
+  func offsetTopLeft(to point: CGPoint) -> CGRect {
     let topLeft = self.topLeft
     return self.offsetBy(dx: point.x - topLeft.x, dy: point.y - topLeft.y)
   }
 
   
-  public enum PinnedEdge {
+  enum PinnedEdge {
     case left
     case right
     case top
@@ -353,19 +353,19 @@ public extension CGRect {
   }
   
   
-  public var centre: CGPoint {
+  var centre: CGPoint {
     return self.origin.offset(x: self.size.width/2, y: self.size.height/2)
   }
   
   // convert top-y coordinates (Quartz) to bottom-y coordinates (Cocoa).
-  public func toCocoaFrame() -> CGRect {
+  func toCocoaFrame() -> CGRect {
     var frame = self
     frame.origin.y = NSMaxY(NSScreen.screens[0].frame) - NSMaxY(frame)
     return frame
   }
   
   // for compatibility with JSONEncoder / JSONDecoder.
-  public var arrayRepresentation: [[CGFloat]] {
+  var arrayRepresentation: [[CGFloat]] {
     return [[self.origin.x, self.origin.y], [self.size.width, self.size.height]]
   }
 
