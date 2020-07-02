@@ -182,6 +182,28 @@ extension NSWindow {
   
 }
 
+public extension NSWindow {
+  
+  func move(toScreen: NSScreen, aligning: WindowAlignment) {
+    // find proportion of my centre
+    let frame = self.frame
+    if let screenFrame = self.screen?.frame {
+      let xRatio = frame.midX / screenFrame.midX * 0.5
+      let yRatio = frame.midY / screenFrame.midY * 0.5
+      
+      let newCentre = CGPoint(x: toScreen.frame.width * xRatio + toScreen.frame.origin.x,
+                              y: toScreen.frame.height * yRatio + toScreen.frame.origin.y)
+      let newFrame = CGRect(centre: newCentre, size: frame.size)
+        
+      self.setFrameOrigin(newFrame.origin)
+    }
+  }
+  
+}
+
+public enum WindowAlignment {
+  case centre
+}
 
 
 public extension NSView {
