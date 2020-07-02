@@ -50,9 +50,9 @@ public extension String {
 
 
 
-extension Array {
+public extension Array {
   
-  public var firstAndOnly: Element? {
+  var firstAndOnly: Element? {
     guard self.count <= 1 else {
       fatalError()
     }
@@ -60,7 +60,38 @@ extension Array {
     return self.first
   }
   
+  
+  func index(after i: Int, looping: Bool) -> Int {
+    if looping {
+      let index = i < self.count - 1 ? i + 1 : 0
+      return index
+    }
+    return self.index(after: i)
+  }
+  
+  func index(before i: Int, looping: Bool) -> Int {
+    if looping {
+      let index = i > 0 ? i - 1 : self.count - 1
+      return index
+    }
+    return self.index(before: i)
+  }
+  
+  
+  func removing(at indexes: [Int]) -> Array {
+    guard !isEmpty else { return self }
+    let newIndexes = Set(indexes).sorted(by: >)
+    var newVal = self
+    newIndexes.forEach {
+      guard $0 < count, $0 >= 0 else { return }
+      newVal.remove(at: $0)
+    }
+    return newVal
+  }
+  
 }
+
+
 
 public extension Array where Array.Element: Equatable {
   
