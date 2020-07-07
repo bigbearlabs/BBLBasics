@@ -62,6 +62,9 @@ public extension Array {
   
   
   func index(after i: Int, looping: Bool) -> Int {
+    if self.count == 0 {
+      return 0
+    }
     if looping {
       let index = i < self.count - 1 ? i + 1 : 0
       return index
@@ -70,6 +73,9 @@ public extension Array {
   }
   
   func index(before i: Int, looping: Bool) -> Int {
+    if self.count == 0 {
+      return 0
+    }
     if looping {
       let index = i > 0 ? i - 1 : self.count - 1
       return index
