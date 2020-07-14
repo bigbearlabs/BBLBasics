@@ -199,6 +199,12 @@ public extension NSWindow {
     }
   }
   
+  func setCentre(_ centre: CGPoint) {
+    let offsetOrigin = self.frame.origin.offset(
+      x: centre.x - self.frame.centre.x,
+      y: centre.y - self.frame.centre.y)
+    self.setFrameOrigin(offsetOrigin)
+  }
 }
 
 public enum WindowAlignment {
