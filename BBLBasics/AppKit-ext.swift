@@ -354,7 +354,7 @@ extension CGRect {
     let delta: CGPoint
     switch edge {
     case .maxX:
-      delta = CGPoint(x: relativeTo.minX + relativeTo.width - self.minX, y: relativeTo.minY - self.minY)
+      delta = CGPoint(x: relativeTo.maxX - self.minX, y: relativeTo.midY - self.midY)
     default:
       fatalError()
     }
