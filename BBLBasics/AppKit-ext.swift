@@ -200,10 +200,11 @@ public extension NSWindow {
   }
   
   func setCentre(_ centre: CGPoint) {
-    let offsetOrigin = self.frame.origin.offset(
-      x: centre.x - self.frame.centre.x,
-      y: centre.y - self.frame.centre.y)
-    self.setFrameOrigin(offsetOrigin)
+    
+    let deltaX = centre.x - self.frame.centre.x
+    let deltaY = centre.y - self.frame.centre.y
+    let newOrigin = self.frame.origin.offset(x: deltaX, y: deltaY)
+    self.setFrameOrigin(newOrigin)
   }
 }
 
