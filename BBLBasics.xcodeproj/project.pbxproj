@@ -16,6 +16,7 @@
 		5191A8F61E3418B5001B94FD /* execution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5191A8F21E3418B5001B94FD /* execution.swift */; };
 		5191A8F71E3418B5001B94FD /* Foundation-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5191A8F31E3418B5001B94FD /* Foundation-ext.swift */; };
 		5191A8FF1E341A17001B94FD /* AppKit-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5191A8FE1E341A17001B94FD /* AppKit-ext.swift */; };
+		51D210C22629390D001EE488 /* NSControl+setAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D210C12629390D001EE488 /* NSControl+setAction.swift */; };
 		51DADAE21E3D784B0035D4EB /* NSArray+MapFilterReduce.h in Headers */ = {isa = PBXBuildFile; fileRef = 51DADAE01E3D784B0035D4EB /* NSArray+MapFilterReduce.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		51DADAE31E3D784B0035D4EB /* NSArray+MapFilterReduce.m in Sources */ = {isa = PBXBuildFile; fileRef = 51DADAE11E3D784B0035D4EB /* NSArray+MapFilterReduce.m */; };
 		51F1A519229EBB4900756EE3 /* Cocoa-oneliners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F1A518229EBB4900756EE3 /* Cocoa-oneliners.swift */; };
@@ -45,6 +46,7 @@
 		5191A8F21E3418B5001B94FD /* execution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = execution.swift; sourceTree = "<group>"; };
 		5191A8F31E3418B5001B94FD /* Foundation-ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation-ext.swift"; sourceTree = "<group>"; };
 		5191A8FE1E341A17001B94FD /* AppKit-ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppKit-ext.swift"; sourceTree = "<group>"; };
+		51D210C12629390D001EE488 /* NSControl+setAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "NSControl+setAction.swift"; path = "../../bblbasics/bblbasics/NSControl+setAction.swift"; sourceTree = "<group>"; };
 		51DADAE01E3D784B0035D4EB /* NSArray+MapFilterReduce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MapFilterReduce.h"; sourceTree = "<group>"; };
 		51DADAE11E3D784B0035D4EB /* NSArray+MapFilterReduce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MapFilterReduce.m"; sourceTree = "<group>"; };
 		51F1A518229EBB4900756EE3 /* Cocoa-oneliners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cocoa-oneliners.swift"; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				513259EC22AFC6A90064F8A2 /* NotificationObservation.swift */,
 				5191A8F21E3418B5001B94FD /* execution.swift */,
 				5191A8F31E3418B5001B94FD /* Foundation-ext.swift */,
+				51D210C12629390D001EE488 /* NSControl+setAction.swift */,
 				51DADAE01E3D784B0035D4EB /* NSArray+MapFilterReduce.h */,
 				51DADAE11E3D784B0035D4EB /* NSArray+MapFilterReduce.m */,
 				5191A8D01E341889001B94FD /* BBLBasics.h */,
@@ -231,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5191A8F71E3418B5001B94FD /* Foundation-ext.swift in Sources */,
+				51D210C22629390D001EE488 /* NSControl+setAction.swift in Sources */,
 				516A99B11ED8E7EB00978A19 /* KeyViewManaging.swift in Sources */,
 				5191A8F61E3418B5001B94FD /* execution.swift in Sources */,
 				513259ED22AFC6A90064F8A2 /* NotificationObservation.swift in Sources */,
