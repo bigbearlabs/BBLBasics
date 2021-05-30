@@ -48,6 +48,11 @@ public func window() -> NSWindow {
 }
 
 
+public func presentAppError(_ error: Error) {
+  NSApp.presentError(error)
+}
+
+
 
 public class ButtonHolder {
   public var button: NSButton!
