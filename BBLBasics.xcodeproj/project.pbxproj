@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5109B09E2668D2FE00DD9F4C /* View-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5109B09D2668D2FE00DD9F4C /* View-ext.swift */; };
 		512E40B022D7703200078E74 /* StatusItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512E40AF22D7703100078E74 /* StatusItemController.swift */; };
 		513259ED22AFC6A90064F8A2 /* NotificationObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513259EC22AFC6A90064F8A2 /* NotificationObservation.swift */; };
 		516A99B11ED8E7EB00978A19 /* KeyViewManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516A99B01ED8E7EB00978A19 /* KeyViewManaging.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5109B09D2668D2FE00DD9F4C /* View-ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View-ext.swift"; sourceTree = "<group>"; };
 		512E40AF22D7703100078E74 /* StatusItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemController.swift; sourceTree = "<group>"; };
 		513259EC22AFC6A90064F8A2 /* NotificationObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationObservation.swift; sourceTree = "<group>"; };
 		51408FDA22C14DB000FB5462 /* WebViewPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = WebViewPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -95,6 +97,7 @@
 		5191A8CF1E341889001B94FD /* BBLBasics */ = {
 			isa = PBXGroup;
 			children = (
+				5109B09D2668D2FE00DD9F4C /* View-ext.swift */,
 				512E40AF22D7703100078E74 /* StatusItemController.swift */,
 				516A99B01ED8E7EB00978A19 /* KeyViewManaging.swift */,
 				51F1A518229EBB4900756EE3 /* Cocoa-oneliners.swift */,
@@ -243,6 +246,7 @@
 				513259ED22AFC6A90064F8A2 /* NotificationObservation.swift in Sources */,
 				5191A8FF1E341A17001B94FD /* AppKit-ext.swift in Sources */,
 				512E40B022D7703200078E74 /* StatusItemController.swift in Sources */,
+				5109B09E2668D2FE00DD9F4C /* View-ext.swift in Sources */,
 				51F1A519229EBB4900756EE3 /* Cocoa-oneliners.swift in Sources */,
 				517432B720FF489D00F33B65 /* NSDocument-quicklook.swift in Sources */,
 				51DADAE31E3D784B0035D4EB /* NSArray+MapFilterReduce.m in Sources */,
@@ -320,7 +324,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -377,7 +381,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
