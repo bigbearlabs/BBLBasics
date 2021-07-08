@@ -95,6 +95,11 @@ public extension Array {
     return newVal
   }
   
+  func toDictionary<Key>(key: (Self.Element) -> Key) -> [Key : Self.Element] {
+    Dictionary(uniqueKeysWithValues: self.map { elem in
+      (key(elem), elem)
+    })
+  }
 }
 
 
