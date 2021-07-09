@@ -61,6 +61,16 @@ public extension Array {
   }
   
   
+  func containsAll(_ array: [Element]) -> Bool where Element: Equatable {
+    for e in array {
+      if !self.contains(e) {
+        return false
+      }
+    }
+    return true
+  }
+
+  
   func index(after i: Int, looping: Bool) -> Int {
     if self.count == 0 {
       return 0
