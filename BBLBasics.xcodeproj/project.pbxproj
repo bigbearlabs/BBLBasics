@@ -38,7 +38,6 @@
 		5109B09D2668D2FE00DD9F4C /* View-ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View-ext.swift"; sourceTree = "<group>"; };
 		512E40AF22D7703100078E74 /* StatusItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemController.swift; sourceTree = "<group>"; };
 		513259EC22AFC6A90064F8A2 /* NotificationObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationObservation.swift; sourceTree = "<group>"; };
-		51408FDA22C14DB000FB5462 /* WebViewPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = WebViewPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		516A99B01ED8E7EB00978A19 /* KeyViewManaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyViewManaging.swift; sourceTree = "<group>"; };
 		517432B620FF489D00F33B65 /* NSDocument-quicklook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDocument-quicklook.swift"; sourceTree = "<group>"; };
 		5191A8CD1E341889001B94FD /* BBLBasics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BBLBasics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,7 +77,6 @@
 		5191A8C31E341889001B94FD = {
 			isa = PBXGroup;
 			children = (
-				51408FDA22C14DB000FB5462 /* WebViewPlayground.playground */,
 				5191A8CF1E341889001B94FD /* BBLBasics */,
 				5191A8DA1E341889001B94FD /* BBLBasicsTests */,
 				5191A8CE1E341889001B94FD /* Products */,
