@@ -66,6 +66,7 @@ open class StatusItemController: NSObject { // for nib-based menu loading.
   }
 
   
+  @objc
   public var view: NSView? {
     return self.statusItem.button
   }
