@@ -22,6 +22,7 @@
 		51DADAE21E3D784B0035D4EB /* NSArray+MapFilterReduce.h in Headers */ = {isa = PBXBuildFile; fileRef = 51DADAE01E3D784B0035D4EB /* NSArray+MapFilterReduce.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		51DADAE31E3D784B0035D4EB /* NSArray+MapFilterReduce.m in Sources */ = {isa = PBXBuildFile; fileRef = 51DADAE11E3D784B0035D4EB /* NSArray+MapFilterReduce.m */; };
 		51F1A519229EBB4900756EE3 /* Cocoa-oneliners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F1A518229EBB4900756EE3 /* Cocoa-oneliners.swift */; };
+		51F96D5B27AD7FA500FD86B0 /* PidMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F96D5A27AD7FA500FD86B0 /* PidMatcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		51DADAE01E3D784B0035D4EB /* NSArray+MapFilterReduce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MapFilterReduce.h"; sourceTree = "<group>"; };
 		51DADAE11E3D784B0035D4EB /* NSArray+MapFilterReduce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MapFilterReduce.m"; sourceTree = "<group>"; };
 		51F1A518229EBB4900756EE3 /* Cocoa-oneliners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cocoa-oneliners.swift"; sourceTree = "<group>"; };
+		51F96D5A27AD7FA500FD86B0 /* PidMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PidMatcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 		5191A8CF1E341889001B94FD /* BBLBasics */ = {
 			isa = PBXGroup;
 			children = (
+				51F96D5A27AD7FA500FD86B0 /* PidMatcher.swift */,
 				5109B09D2668D2FE00DD9F4C /* View-ext.swift */,
 				512E40AF22D7703100078E74 /* StatusItemController.swift */,
 				516A99B01ED8E7EB00978A19 /* KeyViewManaging.swift */,
@@ -241,6 +244,7 @@
 				51D210C22629390D001EE488 /* NSControl+setAction.swift in Sources */,
 				516A99B11ED8E7EB00978A19 /* KeyViewManaging.swift in Sources */,
 				5191A8F61E3418B5001B94FD /* execution.swift in Sources */,
+				51F96D5B27AD7FA500FD86B0 /* PidMatcher.swift in Sources */,
 				513259ED22AFC6A90064F8A2 /* NotificationObservation.swift in Sources */,
 				5191A8FF1E341A17001B94FD /* AppKit-ext.swift in Sources */,
 				512E40B022D7703200078E74 /* StatusItemController.swift in Sources */,
