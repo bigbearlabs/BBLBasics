@@ -467,3 +467,37 @@ public extension Sequence {
   
 }
 
+
+// MARK: -
+
+
+public extension Array where Element: Equatable {
+  /// return an array sorted according to @sortedArray@ to which the results of @evaluatingElementsBy@ are compared.
+  /// if @sortedArray@ is empty, returns an array in identical order to self.
+  /// if element to evaluate is not present in sorted array, element is pushed back.
+  func sorted<Value: Comparable>(sortedArray: [Value], evaluatingElementsBy: (Element) -> Value ) -> Array<Element> {
+    guard !sortedArray.isEmpty else {
+      return self
+    }
+    let tuples = self.map { ($0, evaluatingElementsBy($0)) }
+    let sortedTuples = tuples.sorted {
+      let i1 = sortedArray.firstIndex(of: $0.1)
+      let i2 = sortedArray.firstIndex(of: $1.1)
+      
+      switch (i1, i2) {
+      case (nil, nil):
+        return self.firstIndex(of: $0.0)! < self.firstIndex(of: $1.0)!
+      case (nil, _):
+        return false
+      case (_, nil):
+        return true
+      case let (.some(a), .some(b)):
+        return a < b
+      default: fatalError()
+      }
+    }
+    
+    return sortedTuples.map { $0.0 }
+  }
+}
+
