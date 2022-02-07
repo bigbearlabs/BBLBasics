@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import OrderedCollections
 
 
 
@@ -114,15 +115,9 @@ public extension Array {
 
 
 
-public extension Array where Array.Element: Equatable {
+public extension Array where Array.Element: Equatable & Hashable {
   
   var uniqueValues: [Element] {
-    return self.reduce([], { (acc, e) -> [Element] in
-      if acc.contains(e) {
-        return acc
-      }
-      return acc + [e]
-    })
   }
   
 }

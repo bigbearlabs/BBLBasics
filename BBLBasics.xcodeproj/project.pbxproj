@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		5109B09E2668D2FE00DD9F4C /* View-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5109B09D2668D2FE00DD9F4C /* View-ext.swift */; };
 		512E40B022D7703200078E74 /* StatusItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512E40AF22D7703100078E74 /* StatusItemController.swift */; };
 		513259ED22AFC6A90064F8A2 /* NotificationObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513259EC22AFC6A90064F8A2 /* NotificationObservation.swift */; };
+		51570EEB27B16E0C00831750 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 51570EEA27B16E0C00831750 /* OrderedCollections */; };
 		516A99B11ED8E7EB00978A19 /* KeyViewManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516A99B01ED8E7EB00978A19 /* KeyViewManaging.swift */; };
 		517432B720FF489D00F33B65 /* NSDocument-quicklook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517432B620FF489D00F33B65 /* NSDocument-quicklook.swift */; };
 		5191A8D71E341889001B94FD /* BBLBasics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5191A8CD1E341889001B94FD /* BBLBasics.framework */; };
@@ -62,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51570EEB27B16E0C00831750 /* OrderedCollections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +156,9 @@
 			dependencies = (
 			);
 			name = BBLBasics;
+			packageProductDependencies = (
+				51570EEA27B16E0C00831750 /* OrderedCollections */,
+			);
 			productName = BBLBasics;
 			productReference = 5191A8CD1E341889001B94FD /* BBLBasics.framework */;
 			productType = "com.apple.product-type.framework";
@@ -208,6 +213,9 @@
 				Base,
 			);
 			mainGroup = 5191A8C31E341889001B94FD;
+			packageReferences = (
+				51570EE927B16E0C00831750 /* XCRemoteSwiftPackageReference "swift-collections" */,
+			);
 			productRefGroup = 5191A8CE1E341889001B94FD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -386,7 +394,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -404,7 +413,11 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = BBLBasics/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bigbearlabs.BBLBasics;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -425,7 +438,11 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = BBLBasics/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bigbearlabs.BBLBasics;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -440,7 +457,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = XK44TD8U4S;
 				INFOPLIST_FILE = BBLBasicsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bigbearlabs.BBLBasicsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -454,7 +475,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = XK44TD8U4S;
 				INFOPLIST_FILE = BBLBasicsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bigbearlabs.BBLBasicsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -492,6 +517,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		51570EE927B16E0C00831750 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		51570EEA27B16E0C00831750 /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 51570EE927B16E0C00831750 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5191A8C41E341889001B94FD /* Project object */;
 }
