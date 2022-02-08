@@ -118,6 +118,7 @@ public extension Array {
 public extension Array where Array.Element: Equatable & Hashable {
   
   var uniqueValues: [Element] {
+    OrderedSet(self).elements
   }
   
 }
