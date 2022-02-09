@@ -9,8 +9,8 @@ public class PidMatcher {
   var lastPidQueryTimestamp: Date?
   var pidsForBundleId: [pid_t] = []
 
-  public init(bundleId: String) {
-    self.bundleId = bundleId
+  public init(app: BundleIds) {
+    self.bundleId = app.rawValue
   }
   
   public func matches(pid: pid_t) -> Bool {
