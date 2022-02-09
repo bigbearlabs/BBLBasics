@@ -469,3 +469,16 @@ extension CGSize: Hashable {
     hasher.combine(self.height)
   }
 }
+
+
+// MARK: -
+
+public typealias BundleId = String
+
+public enum BundleIds: BundleId {
+  case finder = "com.apple.finder"
+  case safari = "com.apple.Safari"
+  case dock = "com.apple.dock"
+  case spotlight = "com.apple.Spotlight"
+}
+
