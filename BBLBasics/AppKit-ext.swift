@@ -363,8 +363,9 @@ public extension CGRect {
     switch pinning {
     case .bottom:
       yOffset = self.size.height - height
-    default:
+    case .top:
       yOffset = 0
+    default: fatalError()
     }
     
     return CGRect(x: self.origin.x, y: self.origin.y + yOffset, width: self.size.width, height: height)
