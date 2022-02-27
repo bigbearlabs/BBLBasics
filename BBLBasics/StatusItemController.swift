@@ -23,6 +23,7 @@ open class StatusItemController: NSObject { // for nib-based menu loading.
   }()
   
   
+  @available(*, deprecated)
   public init(
     image: NSImage?,
     menu: NSMenu? = nil,
