@@ -410,8 +410,17 @@ public extension CGRect {
     return self.origin.offset(x: self.size.width/2, y: self.size.height/2)
   }
   
+  func flippedRect(bounds: CGRect) -> CGRect {
+    CGRect(x: self.minX,
+           y: bounds.maxY - self.maxY,
+           width: self.width,
+           height: self.height)
+  }
+
+  
   // convert top-y coordinates (Quartz) to bottom-y coordinates (Cocoa).
   func toCocoaFrame() -> CGRect {
+    print("!!! #toCocoaFrame needs some refining on its deps!!")
     var frame = self
     frame.origin.y = NSMaxY(NSScreen.screens[0].frame) - NSMaxY(frame)
     return frame
