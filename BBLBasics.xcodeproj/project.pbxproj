@@ -193,9 +193,7 @@
 				TargetAttributes = {
 					5191A8CC1E341889001B94FD = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = XK44TD8U4S;
 						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
 					};
 					5191A8D51E341889001B94FD = {
 						CreatedOnToolsVersion = 8.1;
