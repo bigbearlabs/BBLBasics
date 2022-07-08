@@ -468,8 +468,11 @@ public extension Sequence {
 
 
 public extension Array where Element: Equatable {
-  /// return an array sorted according to @sortedArray@ to which the results of @evaluatingElementsBy@ are compared.
-  /// if @sortedArray@ is empty, returns an array in identical order to self.
+  
+  /// return an array sorted by sorting the results of `evaluatingElementsBy` to `sortedArray`.
+  ///
+  /// if `sortedArray` is empty, returns an array in identical order to self.
+  ///
   /// if element to evaluate is not present in sorted array, element is pushed back.
   func sorted<Value: Comparable>(sortedArray: [Value], evaluatingElementsBy: (Element) -> Value ) -> Array<Element> {
     guard !sortedArray.isEmpty else {
@@ -495,5 +498,6 @@ public extension Array where Element: Equatable {
     
     return sortedTuples.map { $0.0 }
   }
+  
 }
 
