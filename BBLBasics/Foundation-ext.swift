@@ -123,6 +123,20 @@ public extension Array where Array.Element: Equatable & Hashable {
   
 }
 
+public extension Array where Array.Element: Equatable {
+  
+  var uniqueValues: [Element] {
+    self.reduce([]) { r, e in
+      if r.contains(e) {
+        return r
+      } else {
+        return r + [e]
+      }
+    }
+  }
+  
+}
+
 
 
 extension Dictionary {
