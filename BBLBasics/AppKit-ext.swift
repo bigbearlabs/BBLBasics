@@ -349,26 +349,37 @@ public extension CGRect {
   func widthChangedTo(_ width: CGFloat, pinning: PinnedEdge) -> CGRect {
     let xOffset: CGFloat
     switch pinning {
+    case .left:
+      xOffset = 0
     case .right:
       xOffset = self.size.width - width
-    default:
-      xOffset = 0
+    default: fatalError()
     }
     
-    return CGRect(x: self.origin.x + xOffset, y: self.origin.y, width: width, height: self.size.height)
+    return CGRect(
+      x: (self.origin.x + xOffset).rounded(),
+      y: self.origin.y,
+      width: width.rounded(),
+      height: self.size.height
+    )
   }
   
   func heightChangedTo(_ height: CGFloat, pinning: PinnedEdge) -> CGRect {
     let yOffset: CGFloat
     switch pinning {
-    case .bottom:
-      yOffset = self.size.height - height
     case .top:
       yOffset = 0
+    case .bottom:
+      yOffset = self.size.height - height
     default: fatalError()
     }
     
-    return CGRect(x: self.origin.x, y: self.origin.y + yOffset, width: self.size.width, height: height)
+    return CGRect(
+      x: self.origin.x,
+      y: (self.origin.y + yOffset).rounded(),
+      width: self.size.width,
+      height: height.rounded()
+    )
   }
   
   func positioned(relativeTo: CGRect, edge: NSRectEdge) -> CGRect {
