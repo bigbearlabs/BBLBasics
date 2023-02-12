@@ -458,6 +458,22 @@ public extension NSRect {
 }
 
 
+// MARK: -
+
+
+public extension NSScreen {
+  class func screen(frame: CGRect) -> NSScreen? {
+    if let containingScreen = self.screens.first(where: { $0.frame.contains(frame) }) {
+      return containingScreen
+    }
+    
+    let intersectingScreens = self.screens.filter({ $0.frame.intersects(frame)})
+    
+    return intersectingScreens.first
+  }
+}
+
+
 // MARK: - not part of Cocoa.framework, but nowhere else to put it yet.
 
 public func cgImage(windowNumber: CGWindowID) -> CGImage? {
