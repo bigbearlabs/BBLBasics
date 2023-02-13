@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5109B09E2668D2FE00DD9F4C /* View-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5109B09D2668D2FE00DD9F4C /* View-ext.swift */; };
+		5109B09E2668D2FE00DD9F4C /* SwiftUI-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5109B09D2668D2FE00DD9F4C /* SwiftUI-ext.swift */; };
 		512E40B022D7703200078E74 /* StatusItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512E40AF22D7703100078E74 /* StatusItemController.swift */; };
 		513259ED22AFC6A90064F8A2 /* NotificationObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513259EC22AFC6A90064F8A2 /* NotificationObservation.swift */; };
 		51570EEB27B16E0C00831750 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 51570EEA27B16E0C00831750 /* OrderedCollections */; };
@@ -37,7 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5109B09D2668D2FE00DD9F4C /* View-ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View-ext.swift"; sourceTree = "<group>"; };
+		5109B09D2668D2FE00DD9F4C /* SwiftUI-ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftUI-ext.swift"; sourceTree = "<group>"; };
 		512E40AF22D7703100078E74 /* StatusItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemController.swift; sourceTree = "<group>"; };
 		513259EC22AFC6A90064F8A2 /* NotificationObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationObservation.swift; sourceTree = "<group>"; };
 		516A99B01ED8E7EB00978A19 /* KeyViewManaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyViewManaging.swift; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				51F96D5A27AD7FA500FD86B0 /* PidMatcher.swift */,
-				5109B09D2668D2FE00DD9F4C /* View-ext.swift */,
+				5109B09D2668D2FE00DD9F4C /* SwiftUI-ext.swift */,
 				512E40AF22D7703100078E74 /* StatusItemController.swift */,
 				516A99B01ED8E7EB00978A19 /* KeyViewManaging.swift */,
 				51F1A518229EBB4900756EE3 /* Cocoa-oneliners.swift */,
@@ -254,7 +254,7 @@
 				513259ED22AFC6A90064F8A2 /* NotificationObservation.swift in Sources */,
 				5191A8FF1E341A17001B94FD /* AppKit-ext.swift in Sources */,
 				512E40B022D7703200078E74 /* StatusItemController.swift in Sources */,
-				5109B09E2668D2FE00DD9F4C /* View-ext.swift in Sources */,
+				5109B09E2668D2FE00DD9F4C /* SwiftUI-ext.swift in Sources */,
 				51F1A519229EBB4900756EE3 /* Cocoa-oneliners.swift in Sources */,
 				517432B720FF489D00F33B65 /* NSDocument-quicklook.swift in Sources */,
 				51DADAE31E3D784B0035D4EB /* NSArray+MapFilterReduce.m in Sources */,
