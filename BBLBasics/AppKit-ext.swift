@@ -399,6 +399,7 @@ public extension CGRect {
     return newFrame
   }
   
+  /// top-left point for rect in AppKit-coordinates, i.e. origin at bottom-right.
   var topLeft: CGPoint {
     return self.origin.offset(x: 0, y: self.height)
   }
