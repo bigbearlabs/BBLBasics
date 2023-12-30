@@ -494,18 +494,22 @@ public extension Array where Element: Equatable {
     }
     let tuples = self.map { ($0, evaluatingElementsBy($0)) }
     let sortedTuples = tuples.sorted {
-      let i1 = sortedArray.firstIndex(of: $0.1)
-      let i2 = sortedArray.firstIndex(of: $1.1)
-      
-      switch (i1, i2) {
+      let (elemA, evalA) = $0
+      let (elemB, evalB) = $1
+
+      switch (sortedArray.firstIndex(of: evalA), sortedArray.firstIndex(of: evalB)) {
+      case let (i1?, i2?):
+        // sort by index in sorted array.
+        return i1 < i2
       case (nil, nil):
-        return self.firstIndex(of: $0.0)! < self.firstIndex(of: $1.0)!
+        // sort by index in self.
+        return self.firstIndex(of: elemA)! < self.firstIndex(of: elemB)!
       case (nil, _):
+        // prefer the non-nil.
         return false
       case (_, nil):
+        // prefer the non-nil.
         return true
-      case let (.some(a), .some(b)):
-        return a < b
       default: fatalError()
       }
     }
