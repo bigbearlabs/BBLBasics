@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import OrderedCollections
 
 
 
@@ -61,6 +62,16 @@ public extension Array {
   }
   
   
+  func containsAll(_ array: [Element]) -> Bool where Element: Equatable {
+    for e in array {
+      if !self.contains(e) {
+        return false
+      }
+    }
+    return true
+  }
+
+  
   func index(after i: Int, looping: Bool) -> Int {
     if self.count == 0 {
       return 0
@@ -95,19 +106,33 @@ public extension Array {
     return newVal
   }
   
+  func toDictionary<Key>(key: (Self.Element) -> Key) -> [Key : Self.Element] {
+    Dictionary(uniqueKeysWithValues: self.map { elem in
+      (key(elem), elem)
+    })
+  }
 }
 
 
 
+public extension Array where Array.Element: Equatable & Hashable {
+  
+  var uniqueValues: [Element] {
+    OrderedSet(self).elements
+  }
+  
+}
+
 public extension Array where Array.Element: Equatable {
   
   var uniqueValues: [Element] {
-    return self.reduce([], { (acc, e) -> [Element] in
-      if acc.contains(e) {
-        return acc
+    self.reduce([]) { r, e in
+      if r.contains(e) {
+        return r
+      } else {
+        return r + [e]
       }
-      return acc + [e]
-    })
+    }
   }
   
 }
@@ -448,6 +473,48 @@ public extension Sequence {
     return self.filter {
       isExcluded($0) == false
     }
+  }
+  
+}
+
+
+// MARK: -
+
+
+public extension Array where Element: Equatable {
+  
+  /// return an array sorted by sorting the results of `evaluatingElementsBy` to `sortedArray`.
+  ///
+  /// if `sortedArray` is empty, returns an array in identical order to self.
+  ///
+  /// if element to evaluate is not present in sorted array, element is pushed back.
+  func sorted<Value: Comparable>(sortedArray: [Value], evaluatingElementsBy: (Element) -> Value ) -> Array<Element> {
+    guard !sortedArray.isEmpty else {
+      return self
+    }
+    let tuples = self.map { ($0, evaluatingElementsBy($0)) }
+    let sortedTuples = tuples.sorted {
+      let (elemA, evalA) = $0
+      let (elemB, evalB) = $1
+
+      switch (sortedArray.firstIndex(of: evalA), sortedArray.firstIndex(of: evalB)) {
+      case let (i1?, i2?):
+        // sort by index in sorted array.
+        return i1 < i2
+      case (nil, nil):
+        // sort by index in self.
+        return self.firstIndex(of: elemA)! < self.firstIndex(of: elemB)!
+      case (nil, _):
+        // prefer the non-nil.
+        return false
+      case (_, nil):
+        // prefer the non-nil.
+        return true
+      default: fatalError()
+      }
+    }
+    
+    return sortedTuples.map { $0.0 }
   }
   
 }

@@ -30,3 +30,20 @@ public extension View {
 
 
 
+@available(macOS 12.0, *)
+public extension Color {
+  init?(data: Data) {
+    guard let colour = try? NSKeyedUnarchiver.unarchivedObject(ofClass: NSColor.self, from: data)
+    else { return nil }
+    self.init(nsColor: colour)
+  }
+  
+  var data: Data {
+    guard let cgColor = self.cgColor,
+            let nsColour = NSColor(cgColor: cgColor)
+    else { fatalError() }
+    
+    let data = try! NSKeyedArchiver.archivedData(withRootObject: nsColour, requiringSecureCoding: false)
+    return data
+  }
+}

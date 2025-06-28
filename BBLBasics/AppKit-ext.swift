@@ -349,25 +349,37 @@ public extension CGRect {
   func widthChangedTo(_ width: CGFloat, pinning: PinnedEdge) -> CGRect {
     let xOffset: CGFloat
     switch pinning {
+    case .left:
+      xOffset = 0
     case .right:
       xOffset = self.size.width - width
-    default:
-      xOffset = 0
+    default: fatalError()
     }
     
-    return CGRect(x: self.origin.x + xOffset, y: self.origin.y, width: width, height: self.size.height)
+    return CGRect(
+      x: (self.origin.x + xOffset).rounded(),
+      y: self.origin.y,
+      width: width.rounded(),
+      height: self.size.height
+    )
   }
   
   func heightChangedTo(_ height: CGFloat, pinning: PinnedEdge) -> CGRect {
     let yOffset: CGFloat
     switch pinning {
+    case .top:
+      yOffset = 0
     case .bottom:
       yOffset = self.size.height - height
-    default:
-      yOffset = 0
+    default: fatalError()
     }
     
-    return CGRect(x: self.origin.x, y: self.origin.y + yOffset, width: self.size.width, height: height)
+    return CGRect(
+      x: self.origin.x,
+      y: (self.origin.y + yOffset).rounded(),
+      width: self.size.width,
+      height: height.rounded()
+    )
   }
   
   func positioned(relativeTo: CGRect, edge: NSRectEdge) -> CGRect {
@@ -387,6 +399,7 @@ public extension CGRect {
     return newFrame
   }
   
+  /// top-left point for rect in AppKit-coordinates, i.e. origin at bottom-right.
   var topLeft: CGPoint {
     return self.origin.offset(x: 0, y: self.height)
   }
@@ -409,8 +422,17 @@ public extension CGRect {
     return self.origin.offset(x: self.size.width/2, y: self.size.height/2)
   }
   
+  func flippedRect(bounds: CGRect) -> CGRect {
+    CGRect(x: self.minX,
+           y: bounds.maxY - self.maxY,
+           width: self.width,
+           height: self.height)
+  }
+
+  
   // convert top-y coordinates (Quartz) to bottom-y coordinates (Cocoa).
   func toCocoaFrame() -> CGRect {
+    print("!!! #toCocoaFrame needs some refining on its deps!!")
     var frame = self
     frame.origin.y = NSMaxY(NSScreen.screens[0].frame) - NSMaxY(frame)
     return frame
@@ -437,6 +459,22 @@ public extension NSRect {
 }
 
 
+// MARK: -
+
+
+public extension NSScreen {
+  class func screen(frame: CGRect) -> NSScreen? {
+    if let containingScreen = self.screens.first(where: { $0.frame.contains(frame) }) {
+      return containingScreen
+    }
+    
+    let intersectingScreens = self.screens.filter({ $0.frame.intersects(frame)})
+    
+    return intersectingScreens.first
+  }
+}
+
+
 // MARK: - not part of Cocoa.framework, but nowhere else to put it yet.
 
 public func cgImage(windowNumber: CGWindowID) -> CGImage? {
@@ -452,3 +490,32 @@ public extension CGImage {
     return CGSize(width: self.width, height: self.height)
   }
 }
+
+
+extension CGRect: Hashable {
+  public func hash(into hasher: inout Hasher) {
+    hasher.combine(self.origin.x)
+    hasher.combine(self.origin.y)
+    hasher.combine(self.size)
+  }
+}
+
+extension CGSize: Hashable {
+  public func hash(into hasher: inout Hasher) {
+    hasher.combine(self.width)
+    hasher.combine(self.height)
+  }
+}
+
+
+// MARK: -
+
+public typealias BundleId = String
+
+public enum BundleIds: BundleId {
+  case finder = "com.apple.finder"
+  case safari = "com.apple.Safari"
+  case dock = "com.apple.dock"
+  case spotlight = "com.apple.Spotlight"
+}
+

@@ -29,5 +29,5 @@ class ActionTrampoline<T>: NSObject {
 }
 
 
-private var NSControlActionFunctionProtocolAssociatedObjectKey = "NSControlActionFunctionProtocolAssociatedObjectKey"
+private var NSControlActionFunctionProtocolAssociatedObjectKey = "NSControlActionFunctionProtocolAssociatedObjectKey".hashValue
 

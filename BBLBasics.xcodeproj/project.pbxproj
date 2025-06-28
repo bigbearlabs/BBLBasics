@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5109B09E2668D2FE00DD9F4C /* View-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5109B09D2668D2FE00DD9F4C /* View-ext.swift */; };
+		5109B09E2668D2FE00DD9F4C /* SwiftUI-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5109B09D2668D2FE00DD9F4C /* SwiftUI-ext.swift */; };
 		512E40B022D7703200078E74 /* StatusItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512E40AF22D7703100078E74 /* StatusItemController.swift */; };
 		513259ED22AFC6A90064F8A2 /* NotificationObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513259EC22AFC6A90064F8A2 /* NotificationObservation.swift */; };
+		51570EEB27B16E0C00831750 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 51570EEA27B16E0C00831750 /* OrderedCollections */; };
 		516A99B11ED8E7EB00978A19 /* KeyViewManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516A99B01ED8E7EB00978A19 /* KeyViewManaging.swift */; };
 		517432B720FF489D00F33B65 /* NSDocument-quicklook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517432B620FF489D00F33B65 /* NSDocument-quicklook.swift */; };
 		5191A8D71E341889001B94FD /* BBLBasics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5191A8CD1E341889001B94FD /* BBLBasics.framework */; };
@@ -23,6 +24,7 @@
 		51DADAE21E3D784B0035D4EB /* NSArray+MapFilterReduce.h in Headers */ = {isa = PBXBuildFile; fileRef = 51DADAE01E3D784B0035D4EB /* NSArray+MapFilterReduce.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		51DADAE31E3D784B0035D4EB /* NSArray+MapFilterReduce.m in Sources */ = {isa = PBXBuildFile; fileRef = 51DADAE11E3D784B0035D4EB /* NSArray+MapFilterReduce.m */; };
 		51F1A519229EBB4900756EE3 /* Cocoa-oneliners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F1A518229EBB4900756EE3 /* Cocoa-oneliners.swift */; };
+		51F96D5B27AD7FA500FD86B0 /* PidMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F96D5A27AD7FA500FD86B0 /* PidMatcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,10 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5109B09D2668D2FE00DD9F4C /* View-ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View-ext.swift"; sourceTree = "<group>"; };
+		5109B09D2668D2FE00DD9F4C /* SwiftUI-ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftUI-ext.swift"; sourceTree = "<group>"; };
 		512E40AF22D7703100078E74 /* StatusItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemController.swift; sourceTree = "<group>"; };
 		513259EC22AFC6A90064F8A2 /* NotificationObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationObservation.swift; sourceTree = "<group>"; };
-		51408FDA22C14DB000FB5462 /* WebViewPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = WebViewPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		516A99B01ED8E7EB00978A19 /* KeyViewManaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyViewManaging.swift; sourceTree = "<group>"; };
 		517432B620FF489D00F33B65 /* NSDocument-quicklook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDocument-quicklook.swift"; sourceTree = "<group>"; };
 		5191A8CD1E341889001B94FD /* BBLBasics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BBLBasics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +57,7 @@
 		51DADAE01E3D784B0035D4EB /* NSArray+MapFilterReduce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MapFilterReduce.h"; sourceTree = "<group>"; };
 		51DADAE11E3D784B0035D4EB /* NSArray+MapFilterReduce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MapFilterReduce.m"; sourceTree = "<group>"; };
 		51F1A518229EBB4900756EE3 /* Cocoa-oneliners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cocoa-oneliners.swift"; sourceTree = "<group>"; };
+		51F96D5A27AD7FA500FD86B0 /* PidMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PidMatcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51570EEB27B16E0C00831750 /* OrderedCollections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,7 +83,6 @@
 		5191A8C31E341889001B94FD = {
 			isa = PBXGroup;
 			children = (
-				51408FDA22C14DB000FB5462 /* WebViewPlayground.playground */,
 				5191A8CF1E341889001B94FD /* BBLBasics */,
 				5191A8DA1E341889001B94FD /* BBLBasicsTests */,
 				5191A8CE1E341889001B94FD /* Products */,
@@ -99,6 +101,8 @@
 		5191A8CF1E341889001B94FD /* BBLBasics */ = {
 			isa = PBXGroup;
 			children = (
+				51F96D5A27AD7FA500FD86B0 /* PidMatcher.swift */,
+				5109B09D2668D2FE00DD9F4C /* SwiftUI-ext.swift */,
 				519617842DBF796400D72EF1 /* NSWindow-debug.swift */,
 				5109B09D2668D2FE00DD9F4C /* View-ext.swift */,
 				512E40AF22D7703100078E74 /* StatusItemController.swift */,
@@ -156,6 +160,9 @@
 			dependencies = (
 			);
 			name = BBLBasics;
+			packageProductDependencies = (
+				51570EEA27B16E0C00831750 /* OrderedCollections */,
+			);
 			productName = BBLBasics;
 			productReference = 5191A8CD1E341889001B94FD /* BBLBasics.framework */;
 			productType = "com.apple.product-type.framework";
@@ -184,15 +191,14 @@
 		5191A8C41E341889001B94FD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1600;
 				ORGANIZATIONNAME = "Big Bear Labs";
 				TargetAttributes = {
 					5191A8CC1E341889001B94FD = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = XK44TD8U4S;
 						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
 					};
 					5191A8D51E341889001B94FD = {
 						CreatedOnToolsVersion = 8.1;
@@ -210,6 +216,9 @@
 				Base,
 			);
 			mainGroup = 5191A8C31E341889001B94FD;
+			packageReferences = (
+				51570EE927B16E0C00831750 /* XCRemoteSwiftPackageReference "swift-collections" */,
+			);
 			productRefGroup = 5191A8CE1E341889001B94FD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -247,10 +256,11 @@
 				51D210C22629390D001EE488 /* NSControl+setAction.swift in Sources */,
 				516A99B11ED8E7EB00978A19 /* KeyViewManaging.swift in Sources */,
 				5191A8F61E3418B5001B94FD /* execution.swift in Sources */,
+				51F96D5B27AD7FA500FD86B0 /* PidMatcher.swift in Sources */,
 				513259ED22AFC6A90064F8A2 /* NotificationObservation.swift in Sources */,
 				5191A8FF1E341A17001B94FD /* AppKit-ext.swift in Sources */,
 				512E40B022D7703200078E74 /* StatusItemController.swift in Sources */,
-				5109B09E2668D2FE00DD9F4C /* View-ext.swift in Sources */,
+				5109B09E2668D2FE00DD9F4C /* SwiftUI-ext.swift in Sources */,
 				51F1A519229EBB4900756EE3 /* Cocoa-oneliners.swift in Sources */,
 				517432B720FF489D00F33B65 /* NSDocument-quicklook.swift in Sources */,
 				51DADAE31E3D784B0035D4EB /* NSArray+MapFilterReduce.m in Sources */,
@@ -311,9 +321,11 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -374,9 +386,11 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -388,7 +402,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -397,18 +412,31 @@
 		5191A8E21E341889001B94FD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = BBLBasics/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu99 gnu++11";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bigbearlabs.BBLBasics;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -418,18 +446,31 @@
 		5191A8E31E341889001B94FD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = BBLBasics/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu99 gnu++11";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bigbearlabs.BBLBasics;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -438,11 +479,16 @@
 		5191A8E51E341889001B94FD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = XK44TD8U4S;
 				INFOPLIST_FILE = BBLBasicsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bigbearlabs.BBLBasicsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -452,11 +498,16 @@
 		5191A8E61E341889001B94FD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = XK44TD8U4S;
 				INFOPLIST_FILE = BBLBasicsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bigbearlabs.BBLBasicsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -494,6 +545,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		51570EE927B16E0C00831750 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		51570EEA27B16E0C00831750 /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 51570EE927B16E0C00831750 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5191A8C41E341889001B94FD /* Project object */;
 }
